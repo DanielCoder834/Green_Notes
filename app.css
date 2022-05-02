@@ -102,9 +102,14 @@ p {
 .backgroundImg {
     background-size: cover;
     background-image: none;
-    width: 1902px;
-    z-index: -1;
+    min-height: 100%;
+    min-width: 1024px;
+    width: 100%;
     height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
 #titleButton {
     position: absolute;
@@ -141,12 +146,12 @@ p {
 }
 footer {
     position: absolute;
-    right: 10px;
+    right:15px;
     overflow: hidden;
     color: white;
 }
 
 .lauchPageFooter {
-    top: 1225px;
+    top: 920px;
     margin-bottom: 0px;
 }

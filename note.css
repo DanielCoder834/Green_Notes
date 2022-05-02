@@ -1,0 +1,43 @@
+html {
+    height: 100%;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Dosis', sans-serif;
+    min-height: 100%;
+}
+/* }
+.navbar {
+    display: flex;
+    align-items: center;
+}
+.SiteHeader {
+    position: absolute;
+    left: 275px;
+    top:0px;
+}
+div {
+    margin-bottom: 0;
+}
+nav {
+    flex: 1;
+    text-align: right;
+}
+
+nav ul li{
+    list-style: none;
+    display: inline-flex;
+    margin: 60px;
+    margin-left: 220px;
+}
+nav ul li a {
+    text-decoration: none;
+    color: green;
+    font-size: 30px;
+    transition: 1s;
+    font-weight: 2000;
+}
+nav ul li a:hover{
+    color: white;
+} */
