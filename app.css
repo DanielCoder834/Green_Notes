@@ -36,21 +36,24 @@ nav {
 
 nav ul li{
     list-style: none;
-    display: inline-block;
+    display: inline-flex;
     margin: 60px;
+    margin-left: 220px;
 }
 nav ul li a {
     text-decoration: none;
-    color:#fff;
-    font-size: 20px;
+    color: green;
+    font-size: 30px;
 }
 
 .row {
+    position:absolute;
     display:flex;
     height:88%; 
     align-items: center ;
 }
 .col {
+    position: absolute;
     flex-basis: 50%;
 }
 
@@ -78,16 +81,13 @@ p {
     background-color: white;
 }
 .logo {
+    position: absolute;
     top: 20px;
     height: 100px;
     width: 100px;
 }
-.noteButton {
-    position: relative;
-    width: 2em;
-    /* margin-left: 1200px; */
-}
 .aboutPage {
+    position: absolute;
     text-align: right;
     /* position: relative;
     top:500px; */
@@ -96,12 +96,28 @@ p {
     color: green;
     /* display: ; */
 }
-#aboutUsHeader {
+.backgroundImg {
+    background-image: none;
+    width: 1902px;
+    z-index: -1;
+    height: auto;
+}
+#titleButton {
+    position: absolute;
+    text-align: center;
+    top: 360px;
+}
+.toNotepadButton {
+    position: absolute; 
+    font-size: 40px;
+    top: 625px;
+    text-decoration: none;
+    background: none;
     color: green;
+    border: 1px solid white;
 }
-#aboutParagraph {
-    color: green;
+.toNotepadButton :hover {
+    text-decoration: none;
+    color: #fff;
 }
-#backgroundColour {
-    background-color: green;
-}
+
