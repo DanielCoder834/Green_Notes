@@ -1,4 +1,4 @@
-* {
+body {
     margin: 0;
     padding: 0;
     font-family: 'Dosis', sans-serif;
@@ -81,4 +81,27 @@ p {
     top: 20px;
     height: 100px;
     width: 100px;
+}
+.noteButton {
+    position: relative;
+    width: 2em;
+    /* margin-left: 1200px; */
+}
+.aboutPage {
+    text-align: right;
+    /* position: relative;
+    top:500px; */
+    /* width: 1000000px; */
+    background-color: white;
+    color: green;
+    /* display: ; */
+}
+#aboutUsHeader {
+    color: green;
+}
+#aboutParagraph {
+    color: green;
+}
+#backgroundColour {
+    background-color: green;
 }
