@@ -5,7 +5,7 @@ body {
     background-color: green;
 }
 
-.container {
+.myContainer {
     width: 100%;
     height: 0;
     padding-right: 8%;
@@ -14,7 +14,7 @@ body {
     /* background-image: linear-gradient(); */
     overflow: hidden;
 }
-.navbar {
+div.myNavbar {
     height: 12%;
     display: flex;
     align-items: center;
@@ -24,31 +24,52 @@ body {
     width: 50px;
     cursor:pointer;
 } */
-.SiteHeader {
+ul.SiteHeader {
     position: absolute;
     left: 275px;
     top:0px;
 }
-nav {
+#nav {
     flex: 1;
     text-align: right;
 }
 
-nav ul li{
+#homeNavList, #AboutNavList, #NotebookNavList {
     list-style: none;
     display: inline-flex;
     margin: 60px;
     margin-left: 220px;
 }
-nav ul li a {
+/* nav ul li{
+    list-style: none;
+    display: inline-flex;
+    margin: 60px;
+    margin-left: 220px;
+} */
+#AboutNavbarOption, #NotebookNavbarOption, #homeNavbarOption {
     text-decoration: none;
     color: green;
     font-size: 30px;
     transition: 1s;
 }
-nav ul li a:hover{
-    color: white;
+/* nav ul li a {
+    transition: 1s;
+} */
+#AboutNavbarOption:hover, #NotebookNavbarOption:hover, #homeNavbarOption:hover {
+    text-decoration: none;
+    color: green;
+    font-size: 30px;
+    transition: 1s;
 }
+/* nav ul li a {
+    text-decoration: none;
+    color: green;
+    font-size: 30px;
+    transition: 1s;
+} */
+/* nav ul li a:hover{
+    color: white;
+} */
 
 .row {
     position:absolute;

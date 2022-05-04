@@ -44,6 +44,7 @@ nav ul li a:hover{
 footer {
     position: absolute;
     right: 10px;
+    overflow: hidden;
     color: white;
 }
 h1 {
@@ -123,14 +124,27 @@ p {
 }
 .charityList {
     position: absolute;
-    font-size: 40px;
+    font-size: 50px;
     text-align: center;
     width: 1000px;
     top: 2050px;
     list-style: none;
     color: white;
 }
+#theTrustHeader {
+    font-size: 70px;
+    position: absolute;
+    top: 2500px;
+    color: green;
+}
+#theTrustParagraph {
+    position: absolute;
+    font-size: 60px;
+    text-align: center;
+    width: 1000px;
+    top: 2700px;
+}
 .whatIsFooter {
-    top: 2400px;
-    margin: 0;
+    top: 3400px;
+    margin-bottom: 0px;
 }

@@ -7,14 +7,12 @@ body {
     font-family: 'Dosis', sans-serif;
     min-height: 100%;
 }
-/* }
 .navbar {
     display: flex;
     align-items: center;
 }
 .SiteHeader {
     position: absolute;
-    left: 275px;
     top:0px;
 }
 div {
@@ -25,11 +23,11 @@ nav {
     text-align: right;
 }
 
-nav ul li{
+nav ul li {
     list-style: none;
     display: inline-flex;
     margin: 60px;
-    margin-left: 220px;
+    margin-left: 180px;
 }
 nav ul li a {
     text-decoration: none;
@@ -40,4 +38,4 @@ nav ul li a {
 }
 nav ul li a:hover{
     color: white;
-} */
+}
