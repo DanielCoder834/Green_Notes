@@ -8,39 +8,6 @@ body {
     background-color: green;
     min-height: 100%;
 }
-.navbar {
-    display: flex;
-    align-items: center;
-}
-.SiteHeader {
-    position: absolute;
-    left: 275px;
-    top:0px;
-}
-div {
-    margin-bottom: 0;
-}
-nav {
-    flex: 1;
-    text-align: right;
-}
-
-nav ul li{
-    list-style: none;
-    display: inline-flex;
-    margin: 60px;
-    margin-left: 220px;
-}
-nav ul li a {
-    text-decoration: none;
-    color: green;
-    font-size: 30px;
-    transition: 1s;
-    font-weight: 2000;
-}
-nav ul li a:hover{
-    color: white;
-}
 footer {
     position: absolute;
     right: 10px;
@@ -52,7 +19,7 @@ h1 {
     font-size: 100px;
 }
 p {
-    color:#fff;
+    color:green;
     font-size: 11px;
 }
 #aboutUsImage {
@@ -76,6 +43,7 @@ p {
 .whatIsPage {
     display: flex;
     justify-content: center;
+    background-color: white;
 }
 
 /* #whatIsHeader{
@@ -91,8 +59,9 @@ p {
     color: green;
 }
 #whatIsParagraph1 {
+    color: green;
     top: 500px;
-    margin: 0
+    margin: 0;
 }
 #theGoalHeader {
     font-size: 70px;
@@ -129,7 +98,7 @@ p {
     width: 1000px;
     top: 2050px;
     list-style: none;
-    color: white;
+    color: green;
 }
 #theTrustHeader {
     font-size: 70px;

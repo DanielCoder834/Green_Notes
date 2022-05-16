@@ -5,95 +5,6 @@ body {
     background-color: green;
 }
 
-.myContainer {
-    width: 100%;
-    height: 0;
-    padding-right: 8%;
-    padding-left: 8%;
-    box-sizing: border-box;
-    /* background-image: linear-gradient(); */
-    overflow: hidden;
-}
-div.myNavbar {
-    height: 12%;
-    display: flex;
-    align-items: center;
-}
-/* .logo {
-    position: relative;
-    width: 50px;
-    cursor:pointer;
-} */
-ul.SiteHeader {
-    position: absolute;
-    left: 275px;
-    top:0px;
-}
-#nav {
-    flex: 1;
-    text-align: right;
-}
-
-#homeNavList, #AboutNavList, #NotebookNavList {
-    list-style: none;
-    display: inline-flex;
-    margin: 60px;
-    margin-left: 220px;
-}
-/* nav ul li{
-    list-style: none;
-    display: inline-flex;
-    margin: 60px;
-    margin-left: 220px;
-} */
-#AboutNavbarOption, #NotebookNavbarOption, #homeNavbarOption {
-    text-decoration: none;
-    color: green;
-    font-size: 30px;
-    transition: 1s;
-}
-/* nav ul li a {
-    transition: 1s;
-} */
-#AboutNavbarOption:hover {
-    text-decoration: none;
-    color: green;
-    font-size: 30px;
-    transition: 1s;
-}
-#NotebookNavbarOption:hover {
-    text-decoration: none;
-    color: green;
-    font-size: 30px;
-    transition: 1s;
-}
-#homeNavbarOption:hover {
-    text-decoration: none;
-    color: green;
-    font-size: 30px;
-    transition: 1s;
-}
-/* nav ul li a {
-    text-decoration: none;
-    color: green;
-    font-size: 30px;
-    transition: 1s;
-} */
-/* nav ul li a:hover{
-    color: white;
-} */
-
-.row {
-    position:absolute;
-    display:flex;
-    height:88%; 
-    align-items: center ;
-}
-.col {
-    position: absolute;
-    flex-basis: 50%;
-}
-
 h1 {
     color:#fff;
     font-size: 100px;
@@ -116,22 +27,7 @@ p {
     color: green;
     background-color: white;
 }
-/* .logo {
-    position: absolute;
-    top: 20px;
-    height: 100px;
-    width: 100px;
-} */
-.aboutPage {
-    position: absolute;
-    text-align: right;
-    /* position: relative;
-    top:500px; */
-    /* width: 1000000px; */
-    background-color: white;
-    color: green;
-    /* display: ; */
-}
+
 .backgroundImg {
     background-size: cover;
     background-image: none;
@@ -144,39 +40,35 @@ p {
     left: 0;
     z-index: -1;
 }
-#titleButton {
-    position: absolute;
-    text-align: center;
-    top: 250px;
+/* #titleButton {
+
+} */
+#toNotepadDiv {
+    font-size: 40px;
 }
 #toNotepadLink {
-    text-align: center;
-    position: absolute; 
-    font-size: 40px;
-    top: 545px;
     background: none;
     color: green;
     border: 3.5px solid white;
-    padding: 10px;
     text-decoration: none; /* no underline */
+    padding: 10px;
     transition: 1s;
 }
 #toNotepadLink:hover {
     color: white;
     /* border-color: green; */
 }
+/* #greenNotesExplainDiv {
+
+} */
 #greenNotesExplain {
-    position: absolute;
-    text-align: center;
-    top: 425px;
     color: white;
     font-size: 40px;
 }
-
-.middleText {
+/* .middleText {
     display: flex;
     justify-content: center;
-}
+} */
 footer {
     position: absolute;
     right:15px;
