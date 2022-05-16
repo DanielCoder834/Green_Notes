@@ -55,7 +55,19 @@ ul.SiteHeader {
 /* nav ul li a {
     transition: 1s;
 } */
-#AboutNavbarOption:hover, #NotebookNavbarOption:hover, #homeNavbarOption:hover {
+#AboutNavbarOption:hover {
+    text-decoration: none;
+    color: green;
+    font-size: 30px;
+    transition: 1s;
+}
+#NotebookNavbarOption:hover {
+    text-decoration: none;
+    color: green;
+    font-size: 30px;
+    transition: 1s;
+}
+#homeNavbarOption:hover {
     text-decoration: none;
     color: green;
     font-size: 30px;
