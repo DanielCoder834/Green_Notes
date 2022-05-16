@@ -17,6 +17,7 @@ footer {
 h1 {
     color:#fff;
     font-size: 100px;
+    padding: 10px;
 }
 p {
     color:green;
@@ -45,7 +46,12 @@ p {
     justify-content: center;
     background-color: white;
 }
-
+p,h1,li {
+    background-color: white;
+}
+/* .bgColor {
+    background-color: white;
+} */
 /* #whatIsHeader{
     position: absolute;
     top: 200px;
