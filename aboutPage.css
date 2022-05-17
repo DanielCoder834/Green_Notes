@@ -1,12 +1,12 @@
-html {
+/* html {
     height: 100%;
-}
+} */
 body {
     margin: 0;
     padding: 0;
     font-family: 'Dosis', sans-serif;
     background-color: green;
-    min-height: 100%;
+    /* min-height: 100%; */
 }
 footer {
     position: absolute;
@@ -41,17 +41,18 @@ p {
     -ms-filter: blur(5px);
     filter: blur(5px); */
 }
-.whatIsPage {
-    display: flex;
-    justify-content: center;
-    background-color: white;
-}
 p,h1,li {
     background-color: white;
+    text-align: center;
 }
-/* .bgColor {
-    background-color: white;
-} */
+
+.spacingAbout {
+    height: 125px;
+    color: none;
+    background-color: none;
+    font-size: none;
+    opacity: hidden;
+}
 /* #whatIsHeader{
     position: absolute;
     top: 200px;
@@ -60,66 +61,66 @@ p,h1,li {
 } */
 #theWhatHeader {
     font-size: 70px;
-    position: absolute;
-    top: 250px;
+    /* position: absolute; */
+    /* top: 15.625rem; */
     color: green;
 }
 #whatIsParagraph1 {
     color: green;
-    top: 500px;
-    margin: 0;
+    /* top: 500px; */
 }
 #theGoalHeader {
     font-size: 70px;
-    position: absolute;
-    top: 800px;
+    /* position: absolute; */
+    /* top: 800px; */
     color: green;
 }
-#whatIsParagraph2 {
+/* #whatIsParagraph2 {
     top: 1000px;
-}
+} */
 .whatIsParagraph {
-    position: absolute;
+    /* position: absolute; */
     font-size: 60px;
     text-align: center;
-    width: 1000px;
+    /* width: 1000px; */
 }
 #theHowHeader {
     font-size: 70px;
-    position: absolute;
-    top: 1500px;
+    /* position: absolute; */
+    /* top: 1500px; */
     color: green;
 }
 #theHowParagraph {
-    position: absolute;
+    /* position: absolute; */
     font-size: 60px;
     text-align: center;
-    width: 1000px;
-    top: 1700px;
+    /* width: 1000px;
+    top: 1700px; */
 }
 .charityList {
-    position: absolute;
+    /* position: absolute; */
     font-size: 50px;
     text-align: center;
-    width: 1000px;
-    top: 2050px;
+    /* width: 1000px;
+    top: 2050px; */
     list-style: none;
     color: green;
+    text-align:center;
 }
 #theTrustHeader {
     font-size: 70px;
-    position: absolute;
-    top: 2500px;
+    /* position: absolute; */
+    /* top: 2500px; */
     color: green;
 }
 #theTrustParagraph {
-    position: absolute;
+    /* position: absolute; */
     font-size: 60px;
     text-align: center;
-    width: 1000px;
-    top: 2700px;
+    /* width: 1000px;
+    top: 2700px; */
 }
 .whatIsFooter {
-    top: 3400px;
+    top: 2100px;
     margin-bottom: 0px;
 }
