@@ -6,13 +6,15 @@ body {
 }
 
 h1 {
-    color:#fff;
+    color: #fff;
     font-size: 100px;
 }
+
 p {
-    color:#fff;
+    color: #fff;
     font-size: 11px;
 }
+
 #SignUp {
     position: relative;
     left: 200px;
@@ -23,6 +25,7 @@ p {
     color: white;
     font-size: 17.5px;
 }
+
 #SignUp:hover {
     color: green;
     background-color: white;
@@ -40,38 +43,55 @@ p {
     left: 0;
     z-index: -1;
 }
-/* #titleButton {
 
+.spacingTitle {
+    height: 200px;
+}
+
+/* #titleButton {
+    top: 50%;
+    left: 50%;
 } */
+#titleButtonText {
+    text-align: center;
+}
+
 #toNotepadDiv {
     font-size: 40px;
+    text-align: center;
 }
+
 #toNotepadLink {
     background: none;
     color: green;
     border: 3.5px solid white;
-    text-decoration: none; /* no underline */
+    text-decoration: none;
+    /* no underline */
     padding: 10px;
     transition: 1s;
 }
+
 #toNotepadLink:hover {
     color: white;
     /* border-color: green; */
 }
+
 /* #greenNotesExplainDiv {
 
 } */
 #greenNotesExplain {
     color: white;
     font-size: 40px;
+    text-align: center;
 }
+
 /* .middleText {
     display: flex;
     justify-content: center;
 } */
 footer {
     position: absolute;
-    right:15px;
+    right: 15px;
     overflow: hidden;
     color: white;
 }
