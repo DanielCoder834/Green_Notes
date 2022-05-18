@@ -5,7 +5,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Dosis', sans-serif;
-    background-color: green;
+    background-color: rgb(255, 6, 234);
     /* min-height: 100%; */
 }
 footer {
@@ -25,7 +25,7 @@ p {
 }
 #aboutUsImage {
     background-image: none;
-    background-size: cover;
+    /* background-size: cover; */
     min-height: 100%;
     min-width: 1024px;
     width: 100%;
@@ -41,9 +41,9 @@ p {
     -ms-filter: blur(5px);
     filter: blur(5px); */
 }
-p,h1,li {
-    background-color: white;
+p,h1,h2,li {
     text-align: center;
+    color: green;
 }
 
 .spacingAbout {
@@ -53,6 +53,26 @@ p,h1,li {
     font-size: none;
     opacity: hidden;
 }
+
+#FAQ {
+    color: white;
+    font-size: 125px;
+}
+
+@media (min-width: 1200px) {
+    .container{
+        max-width: 100%;
+    }
+}
+.backgroundColorWhatIsSection {
+    background-color: white;
+    position: absolute;
+    top: 100px;
+    height: 105%;
+    width: 100%;
+    z-index: -1;
+    right: 20%;
+}
 /* #whatIsHeader{
     position: absolute;
     top: 200px;
@@ -61,66 +81,44 @@ p,h1,li {
 } */
 #theWhatHeader {
     font-size: 70px;
-    /* position: absolute; */
-    /* top: 15.625rem; */
-    color: green;
 }
-#whatIsParagraph1 {
-    color: green;
-    /* top: 500px; */
-}
+/* #whatIsParagraph1 {
+} */
 #theGoalHeader {
     font-size: 70px;
-    /* position: absolute; */
-    /* top: 800px; */
-    color: green;
 }
 /* #whatIsParagraph2 {
-    top: 1000px;
 } */
 .whatIsParagraph {
-    /* position: absolute; */
     font-size: 60px;
     text-align: center;
-    /* width: 1000px; */
 }
 #theHowHeader {
     font-size: 70px;
-    /* position: absolute; */
-    /* top: 1500px; */
-    color: green;
 }
 #theHowParagraph {
-    /* position: absolute; */
     font-size: 60px;
     text-align: center;
-    /* width: 1000px;
-    top: 1700px; */
 }
 .charityList {
-    /* position: absolute; */
     font-size: 50px;
     text-align: center;
-    /* width: 1000px;
-    top: 2050px; */
     list-style: none;
-    color: green;
     text-align:center;
 }
 #theTrustHeader {
     font-size: 70px;
-    /* position: absolute; */
-    /* top: 2500px; */
-    color: green;
 }
 #theTrustParagraph {
-    /* position: absolute; */
     font-size: 60px;
     text-align: center;
-    /* width: 1000px;
-    top: 2700px; */
 }
-.whatIsFooter {
-    top: 2100px;
+/* .whatIsFooter {
+    top: 2200px;
     margin-bottom: 0px;
-}
+} */
+.vcenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
