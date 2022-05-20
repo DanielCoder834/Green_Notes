@@ -1,3 +1,75 @@
+
+showNotebookName();
+
+let addNotebook = document.getElementById("addNotebook");
+addNotebook.addEventListener("click", function (e) {
+    let addNotebookName = document.getElementById("addNotebookName");
+    let name = localStorage.getItem("name");
+
+    if (name == null) nameObj = [];
+    else nameObj = JSON.parse(name);
+
+    nameObj.push(addNotebookName.value);
+    localStorage.setItem("name", JSON.stringify(nameObj));
+    addNotebookName.value = "";
+
+    showNotebookName();
+})
+
+function showNotebookName() {
+    let name = localStorage.getItem("name");
+
+    if (name == null) nameObj = [];
+    else nameObj = JSON.parse(name);
+
+    let html = "";
+
+
+    nameObj.forEach(function (element, index) {
+        html += `
+        <div class="list-group list-group-flush border-bottom scrollarea">
+            <div class="align-items-center">
+            <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                        <a href="#" class="py-3 list-group-item list-group-item-action active bg-success" aria-current="true"> 
+                            ${element}
+                            <button type="button" class="btn-close btn-close-white float-end" 
+                            id="${index}" 
+                            onclick="deleteName(this.id)"
+                            aria-label="Close"></button>
+                        </a>
+                    </li>
+                </ul>
+            <div/>
+        <div/>`;
+    });
+
+    let nameElm = document.getElementById("name");
+
+    if (nameObj.length != 0) nameElm.innerHTML = html;
+    else
+        nameElm.innerHTML = `Ready to start writing?`;
+}
+function deleteName(index) {
+    let name = localStorage.getItem("name");
+
+    if (name == null) nameObj = [];
+    else nameObj = JSON.parse(name);
+
+    nameObj.splice(index, 1);
+
+    localStorage.setItem("name",
+        JSON.stringify(nameObj));
+
+    showNotebookName();
+}
+
+
+
+
+
+
+
 showNotes();
 
 let addBtn = document.getElementById("addBtn");
@@ -14,6 +86,7 @@ addBtn.addEventListener("click", function (e) {
 
     showNotes();
 });
+
 
 // Function to show elements from localStorage
 function showNotes() {

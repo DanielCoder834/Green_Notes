@@ -48,6 +48,25 @@ p {
     height: 200px;
 }
 
+/* .animatedHeading{
+  color: #D64933; 
+  font-size: 10vh; 
+  white-space: nowrap;
+  overflow: hidden;
+  width: 30em;
+  animation: title 7s steps(70, end); 
+  margin-bottom: 40px;
+}
+
+@keyframes title{ 
+  from { width: 0; opacity: 0.0;}
+  to { opacity: 1.0; } 
+}  */
+
+
+
+
+
 
 /* .animatedHeading{
     font-family: monospace;

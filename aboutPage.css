@@ -59,11 +59,10 @@ p,h1,h2,li {
     font-size: 125px;
 }
 
-@media (min-width: 1200px) {
-    .container{
-        max-width: 100%;
-    }
+.widthExpansion {
+    max-width: 100%;
 }
+
 .backgroundColorWhatIsSection {
     background-color: white;
     position: absolute;

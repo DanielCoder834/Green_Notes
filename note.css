@@ -39,3 +39,12 @@ nav ul li a {
 nav ul li a:hover{
     color: white;
 }
+#plusNotebookOption {
+    background-color: white;
+    color: green;
+    border: 1px solid green;
+    border-radius: 10%;
+}
+#plusNotebookOption:hover {
+    background-color: rgba(0, 128, 0, 0.435);
+}
