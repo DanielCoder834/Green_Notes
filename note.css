@@ -48,3 +48,30 @@ nav ul li a:hover{
 #plusNotebookOption:hover {
     background-color: rgba(0, 128, 0, 0.435);
 }
+
+[data-tab-content] {
+    display: none;
+}
+.active[data-tab-content] {
+    display: block;
+}
+/* .createNotebookName {
+    position: absolute;
+    top: 20vh;
+    left: 20%;
+} */
+/* #sidebar {
+    height: 100%;
+    position: fixed;
+    margin-bottom: -100px;
+    margin-right: 20vw;
+  } */
+/* #sidebar {
+    text-align: left; 
+    z-index: 1;
+    height: 100%;
+    overflow-y:hidden;
+    border-right: 1px solid;
+    margin-left: -11vw;
+} */
+

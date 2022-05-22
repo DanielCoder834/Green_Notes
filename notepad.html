@@ -24,7 +24,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <input type="text" minlength="0" maxlength="20" size="64" id="addNotebookName">
+                    <input type="text" minlength="0" maxlength="18" size="64" id="addNotebookName"
+                        placeholder="Default Notebook Name">
                     <p> Dear Users,
                         Right now it the site is in an early stage so if any
                         issues arise, don't be afraid to contact me.
@@ -38,61 +39,63 @@
             </div>
         </div>
     </div>
-
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-        <div class="container-fluid px-3">
-            <a class="navbar-brand" href="homePage.html">The Green Notebook</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="homePage.html">Home</a>
-                    <a class="nav-link" href="notepad.html">Notebook</a>
-                    <a class="nav-link" href="about.html">About</a>
+    <div class="wrapperContent">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+            <div class="container-fluid px-3">
+                <a class="navbar-brand" href="homePage.html">The Green Notebook</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link active" aria-current="page" href="homePage.html">Home</a>
+                        <a class="nav-link" href="notepad.html">Notebook</a>
+                        <a class="nav-link" href="about.html">About</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
-    <div class="container">
-        <div class="row">
-            <div class="col py-5">
-                <h1 class="nav justify-content-center">The Notebook</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-4 sticky-top">
-                <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">Create a
-                    Notebook</button>
-                <div id="name">
+        </nav>
+        <div class="container-fluid">
+            <div class="row flex-nowrap">
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark vh-100" id="tabsPage">
+                    <div
+                        class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                        <a href="#"
+                            class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                            <span class="fs-5 d-none d-sm-inline">The Notebook</span>
+                        </a>
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">Create a
+                            Notebooks</button>
+                        <div id="name" class="tab">
 
-                </div>
-            </div>
-            <div class="col-8">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            Add a Note
-
-                        </h5>
-                        <div class="form-group">
-                            <textarea class="form-control" id="addTxt" rows="3">
-                            </textarea>
                         </div>
-                        <button class="btn btn-primary" id="addBtn" style="background-color:green">
-                            Add Note
-                        </button>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="notes" class="row container-fluid">
-        </div>
-    </div>
+        <!-- <div class="contentWrapper w-75 tabContent" data-tab-content>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                Add a Note
 
+                            </h5>
+                            <div class="form-group">
+                                <textarea class="form-control" id="addTxt" rows="3">
+                    </textarea>
+                            </div>
+                            <button class="btn btn-primary" id="addBtn" style="background-color:green">
+                                Add Note
+                            </button>
+                        </div>
+                    </div>
+                    <div id="notes" class="row container-fluid">
+                    </div>
+                </div> -->
+    </div>
     <script src="noteTaking.js"></script>
 
 
@@ -109,3 +112,47 @@
 </body>
 
 </html>
+
+
+
+
+
+<!-- <div class="container flex-column">
+            <div class="row">
+                <div class="col py-2">
+                    <h1 class="nav justify-content-center"></h1>
+                    The Notebook
+                </div>
+            </div>
+            <div class="row width">
+                <div class="col-2 active-nav d-flex flex-wrap flex-column createNotebookName" id="sidebar">
+                    <div id="mainContentSidebar">
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">Create a
+                            Notebook</button>
+                        <div id="name">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-10 data-tab-content">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                Add a Note
+
+                            </h5>
+                            <div class="form-group">
+                                <textarea class="form-control" id="addTxt" rows="3">
+                            </textarea>
+                            </div>
+                            <button class="btn btn-primary" id="addBtn" style="background-color:green">
+                                Add Note
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="notes" class="row container-fluid">
+            </div>
+        </div> -->

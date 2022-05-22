@@ -1,4 +1,22 @@
 
+const tabs = document.querySelectorAll('.tab')
+const tabContents = document.querySelectorAll('.tabContent')
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = document.querySelector(tab.dataset.tabTarget)
+    tabContents.forEach(tabContent => {
+      tabContent.classList.remove('active')
+    })
+    tabs.forEach(tab => {
+      tab.classList.remove('active')
+    })
+    tab.classList.add('active')
+    // target.classList.add('active')
+  })
+})
+
+
 showNotebookName();
 
 let addNotebook = document.getElementById("addNotebook");
@@ -16,6 +34,7 @@ addNotebook.addEventListener("click", function (e) {
     showNotebookName();
 })
 
+
 function showNotebookName() {
     let name = localStorage.getItem("name");
 
@@ -24,16 +43,40 @@ function showNotebookName() {
 
     let html = "";
 
+    let sidebar = document.querySelector('#tabsPage');
+    let noteHtml = document.createElement('div');
 
     nameObj.forEach(function (element, index) {
-        html += `
-        <div class="list-group list-group-flush border-bottom scrollarea">
-            <div class="align-items-center">
+        noteHtml.innerHTML = `<div class="contentWrapper w-75 tabContent" data-tab-content>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">
+                Add a Note
+
+            </h5>
+            <div class="form-group">
+                <textarea class="form-control" id="addTxt" rows="3">
+    </textarea>
+            </div>
+            <button class="btn btn-primary" id="addBtn" style="background-color:green">
+                Add Note
+            </button>
+        </div>
+    </div>
+    <div id="notes" class="row container-fluid">
+    </div>
+</div>`;
+sidebar.insertAdjacentElement('beforeend', noteHtml);
+        html +=
+            `<div class="list-group list-group-flush border-bottom scrollarea">
+            <div class="align-items-center" data-tab-target="#notePad">
             <ul class="nav nav-tabs">
                         <li class="nav-item">
-                        <a href="#" class="py-3 list-group-item list-group-item-action active bg-success" aria-current="true"> 
-                            ${element}
-                            <button type="button" class="btn-close btn-close-white float-end" 
+                        <a href="#" data-tab-target = "#${element}" class="py-5 list-group-item list-group-item-action active bg-success" aria-current="true"> 
+                            ${element} 
+                            \u00A0
+                            \u00A0
+                            <button type="button" class="btn-close btn-close-white float-end tabLinks"
                             id="${index}" 
                             onclick="deleteName(this.id)"
                             aria-label="Close"></button>
@@ -65,6 +108,23 @@ function deleteName(index) {
 }
 
 
+// function tabLogic(evt, element) {
+//     tabcontent = document.querySelectorAll('.tabContents')
+//     for (i = 0; i < tabcontent.length; i++) {
+//         tabcontent[i].style.display = "none";
+//     }
+
+//     // Get all elements with class="tablinks" and remove the class "active"
+//     tablinks = document.querySelectorAll('.tabLinks');
+//     tablinks.classList.add("active"); 
+//     for (i = 0; i < tablinks.length; i++) {
+//         tablinks[i].className = tablinks[i].className.replace(" active", "");
+//     }
+
+//     // Show the current tab, and add an "active" class to the button that opened the tab
+//     document.querySelector(element).style.display = "block";
+//     evt.currentTarget.className += " active";
+// }
 
 
 
@@ -117,12 +177,12 @@ function showNotes() {
         </div>`;
     });
 
-    let notesElm = document.getElementById("notes");
+        // let notesElm = document.getElementById("notes");
 
-    if (notesObj.length != 0) notesElm.innerHTML = html;
-    else
-        notesElm.innerHTML = `Nothing to show! 
-        Use "Add a Note" section above to add notes.`;
+        // if (notesObj.length != 0) notesElm.innerHTML = html;
+        // else
+        //     notesElm.innerHTML = `Nothing to show! 
+        //     Use "Add a Note" section above to add notes.`;
 }
 
 // Function to delete a note
