@@ -71,3 +71,10 @@ nav ul li a:hover{
     border-right: 1px solid;
     margin-left: -11vw;
 } */
+.textOptions {
+    border: 1px solid black;
+    padding: auto;
+}
+.noteTxt {
+    font-weight: normal;
+}

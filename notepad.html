@@ -12,8 +12,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dosis&display=swap" rel="stylesheet">
-    <!-- <script src="https://cdn.tiny.cloud/1/y2d57a11p09uppv6te2ypgwsmtfzk4xzfwtqhcx478uc5pq0/tinymce/6/tinymce.min.js"
-        referrerpolicy="origin"></script> -->
+    <script src="https://cdn.tiny.cloud/1/y2d57a11p09uppv6te2ypgwsmtfzk4xzfwtqhcx478uc5pq0/tinymce/6/tinymce.min.js"
+        referrerpolicy="origin"></script>
 </head>
 
 <body class="bg-success">
@@ -53,13 +53,14 @@
                         placeholder="Default Note Name">
                     <p> Dear Users,
                         Right now it the site is in an early stage so if any
-                        issues arise, I am sorry and I hope to fix those issues in the future. 
+                        issues arise, I am sorry and I hope to fix those issues in the future.
                         I hope you enjoy the website.
                     </p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary addBtn addNoteNameBtn" data-bs-dismiss="modal">Create</button>
+                    <button type="button" class="btn btn-primary addBtn addNoteNameBtn"
+                        data-bs-dismiss="modal">Create</button>
                 </div>
             </div>
         </div>
@@ -87,35 +88,44 @@
         <div class="">
             <!-- class='container-fluid' above -->
             <!-- <div class="flex-nowrap"> -->
-                <!-- class="row" above -->
-                <div class="row">
-                    <div class="col text-center py-4 text-white">
-                        <h1 class="display-1">The Notebook</h1>
-                    </div>
+            <!-- class="row" above -->
+            <div class="row">
+                <div class="col text-center py-4 text-white">
+                    <h1 class="display-1">The Notebook</h1>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="contentWrapper tabContent" data-tab-content>
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        Add a Note
-
-                                    </h5>
-                                    <div class="form-group">
-                                        <textarea class="form-control" id="addTxt" rows="3">
+            </div>
+            <div class="row">
+                <div class="col">
+                    <textarea id="addTxt">
+                        Write Here
+                    </textarea>
+                </div>
+            </div>
+            <div id="notes" class="row container-fluid">
+            </div>
+            <!-- <div class="row">
+                <div class="col">
+                    <div class="contentWrapper tabContent" data-tab-content>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    Add a Note
+                                </h5>
+                                <div class="form-group">
+                                    <textarea class="form-control noteTxt" id="addTxt" rows="3">
                             </textarea>
-                                    </div>
-                                    <button class="btn btn-primary" style="background-color:green" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        Add Note
-                                    </button>
                                 </div>
+                                <button class="btn btn-primary" style="background-color:green" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    Add Note
+                                </button>
                             </div>
-                            <div id="notes" class="row container-fluid">
-                            </div>
+                        </div>
+                        <div id="notes" class="row container-fluid">
                         </div>
                     </div>
                 </div>
+            </div> -->
             <!-- </div> -->
         </div>
         <!-- <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark vh-100" id="tabsPage">
@@ -155,8 +165,7 @@
                     </div>
                 </div> -->
     </div>
-    <script src="noteTaking.js"></script>
-
+    <script src="noteTaking.js"></script>>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -172,6 +181,17 @@
 
 </html>
 
+
+
+<!-- <div class="textOptions">
+    <button class="bg-light text-success boldButton">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+            fill="currentColor" class="bi bi-type-bold" viewBox="0 0 16 16">
+            <path
+                d="M8.21 13c2.106 0 3.412-1.087 3.412-2.823 0-1.306-.984-2.283-2.324-2.386v-.055a2.176 2.176 0 0 0 1.852-2.14c0-1.51-1.162-2.46-3.014-2.46H3.843V13H8.21zM5.908 4.674h1.696c.963 0 1.517.451 1.517 1.244 0 .834-.629 1.32-1.73 1.32H5.908V4.673zm0 6.788V8.598h1.73c1.217 0 1.88.492 1.88 1.415 0 .943-.643 1.449-1.832 1.449H5.907z" />
+        </svg>
+    </button>
+</div> -->
 
 
 

@@ -1,13 +1,100 @@
 
+    
+tinymce.init({
+    selector: 'textarea#addTxt',
+    plugins: 'save a11ychecker advcode casechange export formatpainter image editimage linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tableofcontents tinycomments tinymcespellchecker',
+    toolbar: 'save a11ycheck addcomment showcomments casechange checklist code export formatpainter image editimage pageembed permanentpen table tableofcontents',
+    toolbar_mode: 'floating',
+    tinycomments_mode: 'embedded',
+    tinycomments_author: 'Author name',
+});
 
-// tinymce.init({
-//     selector: 'textarea#addTxt',
-//     plugins: 'save a11ychecker advcode casechange export formatpainter image editimage linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tableofcontents tinycomments tinymcespellchecker',
-//     toolbar: 'save a11ycheck addcomment showcomments casechange checklist code export formatpainter image editimage pageembed permanentpen table tableofcontents',
-//     toolbar_mode: 'floating',
-//     tinycomments_mode: 'embedded',
-//     tinycomments_author: 'Author name',
-// });
+  // let saveBar = tinymce.toolbar.save;
+  showNotes();
+  
+  let addBtn = document.querySelector(".addBtn");
+  addBtn.addEventListener("click", function (e) {
+      let addTxt = document.getElementById("addTxt");
+      let notes = localStorage.getItem("notes");
+  
+      if (notes == null) notesObj = [];
+      else notesObj = JSON.parse(notes);
+  
+      notesObj.push(addTxt.value);
+      localStorage.setItem("notes", JSON.stringify(notesObj));
+      addTxt.value = "";  
+  
+      showNotes();
+  });
+  
+  
+  // Function to show elements from localStorage
+  function showNotes() {
+      let notes = localStorage.getItem("notes");
+      let theNoteName = document.querySelector("#addTextN"); 
+  
+      if (notes == null) notesObj = [];
+      else notesObj = JSON.parse(notes);
+      // Note ${index + 1} for card title
+      let html = "";
+  
+      notesObj.forEach(function (element, index) {
+          html += `<div class="noteCard my-2 mx-2 card" 
+              style="width: 18rem;">
+                  <div class="card-body">
+                      <h5 class="card-title">
+                          ${theNoteName.value}
+                      </h5>
+                      <p class="card-text"> 
+                          ${element}
+                      </p>
+     
+                    <button id="${index}" onclick=
+                      "deleteNote(this.id)"
+                      class="btn btn-primary">
+                      Delete Note
+                  </button>
+              </div>
+          </div>`;
+      });
+  
+          let notesElm = document.getElementById("notes");
+  
+          if (notesObj.length != 0) notesElm.innerHTML = html;
+          else
+              notesElm.innerHTML = `Nothing to show! 
+              Use "Add a Note" section above to add notes.`;
+  }
+  
+  // Function to delete a note
+  function deleteNote(index) {
+      let notes = localStorage.getItem("notes");
+  
+      if (notes == null) notesObj = [];
+      else notesObj = JSON.parse(notes);
+  
+      notesObj.splice(index, 1);
+  
+      localStorage.setItem("notes",
+          JSON.stringify(notesObj));
+  
+      showNotes();
+  }
+
+
+
+
+
+//   let boldButton = document.querySelector('.boldButton'); 
+  // boldButton.addEventListener("click", function () {
+  //       let noteTxt = document.querySelector('.noteTxt'); 
+  //       noteTxt.value.style.fontWeight = "900";
+  //       if (noteTxt.style.fontWeight === undefined || noteTxt.style.fontWeight === null) { 
+    
+  //       } 
+  //   });
+
+
 
 
 
@@ -127,76 +214,3 @@
 // }
 
 
-
-
-
-showNotes();
-
-let addBtn = document.querySelector(".addBtn");
-addBtn.addEventListener("click", function (e) {
-    let addTxt = document.getElementById("addTxt");
-    let notes = localStorage.getItem("notes");
-
-    if (notes == null) notesObj = [];
-    else notesObj = JSON.parse(notes);
-
-    notesObj.push(addTxt.value);
-    localStorage.setItem("notes", JSON.stringify(notesObj));
-    addTxt.value = "";  
-
-    showNotes();
-});
-
-
-// Function to show elements from localStorage
-function showNotes() {
-    let notes = localStorage.getItem("notes");
-    let theNoteName = document.querySelector("#addTextN"); 
-
-    if (notes == null) notesObj = [];
-    else notesObj = JSON.parse(notes);
-    // Note ${index + 1} for card title
-    let html = "";
-
-    notesObj.forEach(function (element, index) {
-        html += `<div class="noteCard my-2 mx-2 card" 
-            style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">
-                        ${theNoteName.value}
-                    </h5>
-                    <p class="card-text"> 
-                        ${element}
-                    </p>
-   
-                  <button id="${index}" onclick=
-                    "deleteNote(this.id)"
-                    class="btn btn-primary">
-                    Delete Note
-                </button>
-            </div>
-        </div>`;
-    });
-
-        let notesElm = document.getElementById("notes");
-
-        if (notesObj.length != 0) notesElm.innerHTML = html;
-        else
-            notesElm.innerHTML = `Nothing to show! 
-            Use "Add a Note" section above to add notes.`;
-}
-
-// Function to delete a note
-function deleteNote(index) {
-    let notes = localStorage.getItem("notes");
-
-    if (notes == null) notesObj = [];
-    else notesObj = JSON.parse(notes);
-
-    notesObj.splice(index, 1);
-
-    localStorage.setItem("notes",
-        JSON.stringify(notesObj));
-
-    showNotes();
-}
