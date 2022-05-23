@@ -7,14 +7,11 @@ body {
     font-family: 'Dosis', sans-serif;
     min-height: 100%;
 }
-.navbar {
-    display: flex;
-    align-items: center;
-}
 .SiteHeader {
     position: absolute;
     top:0px;
 }
+
 div {
     margin-bottom: 0;
 }
@@ -49,12 +46,12 @@ nav ul li a:hover{
     background-color: rgba(0, 128, 0, 0.435);
 }
 
-[data-tab-content] {
+/* [data-tab-content] {
     display: none;
 }
 .active[data-tab-content] {
     display: block;
-}
+} */
 /* .createNotebookName {
     position: absolute;
     top: 20vh;
@@ -74,4 +71,3 @@ nav ul li a:hover{
     border-right: 1px solid;
     margin-left: -11vw;
 } */
-

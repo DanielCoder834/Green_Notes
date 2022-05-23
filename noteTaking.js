@@ -1,111 +1,111 @@
 
-const tabs = document.querySelectorAll('.tab')
-const tabContents = document.querySelectorAll('.tabContent')
 
-tabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    const target = document.querySelector(tab.dataset.tabTarget)
-    tabContents.forEach(tabContent => {
-      tabContent.classList.remove('active')
-    })
-    tabs.forEach(tab => {
-      tab.classList.remove('active')
-    })
-    tab.classList.add('active')
-    // target.classList.add('active')
-  })
-})
+// tinymce.init({
+//     selector: 'textarea#addTxt',
+//     plugins: 'save a11ychecker advcode casechange export formatpainter image editimage linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tableofcontents tinycomments tinymcespellchecker',
+//     toolbar: 'save a11ycheck addcomment showcomments casechange checklist code export formatpainter image editimage pageembed permanentpen table tableofcontents',
+//     toolbar_mode: 'floating',
+//     tinycomments_mode: 'embedded',
+//     tinycomments_author: 'Author name',
+// });
 
 
-showNotebookName();
 
-let addNotebook = document.getElementById("addNotebook");
-addNotebook.addEventListener("click", function (e) {
-    let addNotebookName = document.getElementById("addNotebookName");
-    let name = localStorage.getItem("name");
+// const tabs = document.querySelectorAll('[data-tab-target]')
+// const tabContents = document.querySelectorAll('[data-tab-content]')
 
-    if (name == null) nameObj = [];
-    else nameObj = JSON.parse(name);
+// tabs.forEach(tab => {
+//   tab.addEventListener('click', () => {
+//     const target = document.querySelector(tab.dataset.tabTarget)
+//     tabContents.forEach(tabContent => {
+//       tabContent.classList.remove('active')
+//     })
+//     tabs.forEach(tab => {
+//       tab.classList.remove('active')
+//     })
+//     tab.classList.add('active')
+//     target.classList.add('active')
+//     console.log("HYi")
+//   })
+// })
 
-    nameObj.push(addNotebookName.value);
-    localStorage.setItem("name", JSON.stringify(nameObj));
-    addNotebookName.value = "";
 
-    showNotebookName();
-})
+// showNotebookName();
+
+// let addNotebook = document.getElementById("addNotebook");
+// addNotebook.addEventListener("click", function (e) {
+//     let addNotebookName = document.getElementById("addNotebookName");
+//     let name = localStorage.getItem("name");
+
+//     if (name == null) nameObj = [];
+//     else nameObj = JSON.parse(name);
+
+//     nameObj.push(addNotebookName.value);
+//     localStorage.setItem("name", JSON.stringify(nameObj));
+//     addNotebookName.value = "";
+
+//     showNotebookName();
+// })
 
 
-function showNotebookName() {
-    let name = localStorage.getItem("name");
+// function showNotebookName() {
+//     let name = localStorage.getItem("name");
 
-    if (name == null) nameObj = [];
-    else nameObj = JSON.parse(name);
+//     if (name == null) nameObj = [];
+//     else nameObj = JSON.parse(name);
 
-    let html = "";
+//     let html = "";
+    // const content = document.createTextNode(`<div class="col-xl-10 tabContent active" data-tab-content>
+    //     <textarea>
+    //         Welcome to The Green Notebook
+    //     </textarea>
+    // </div>`);
+    // let sidebar = document.querySelector('#tabsPage');
+    // let noteHtml = document.createElement('div');
+    // noteHtml.classList.add("col-xl-10 tabContent active");
 
-    let sidebar = document.querySelector('#tabsPage');
-    let noteHtml = document.createElement('div');
+    // nameObj.forEach(function (element, index) {
+//         noteHtml.innerHTML = ;
+        // sidebar.insertAdjacentElement('beforeend', content);
+        // html +=
+        //     `<div class="list-group list-group-flush border-bottom scrollarea">
+        //     <div class="align-items-center" data-tab-target="#notePad">
+        //     <ul class="nav nav-tabs tabs">
+        //                 <li class="nav-item tab" data-tab-target = "#${element}" >
+        //                 <a href="#" class="py-5 list-group-item list-group-item-action active bg-success" aria-current="true"> 
+        //                     ${element} 
+        //                     \u00A0
+        //                     \u00A0
+        //                     <button type="button" class="btn-close btn-close-white float-end tabLinks"
+        //                     id="${index}" 
+        //                     onclick="deleteName(this.id)"
+        //                     aria-label="Close"></button>
+        //                 </a>
+        //             </li>
+        //         </ul>
+        //     <div/>
+        // <div/>`;
+    // });
 
-    nameObj.forEach(function (element, index) {
-        noteHtml.innerHTML = `<div class="contentWrapper w-75 tabContent" data-tab-content>
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">
-                Add a Note
+    // let nameElm = document.getElementById("name");
 
-            </h5>
-            <div class="form-group">
-                <textarea class="form-control" id="addTxt" rows="3">
-    </textarea>
-            </div>
-            <button class="btn btn-primary" id="addBtn" style="background-color:green">
-                Add Note
-            </button>
-        </div>
-    </div>
-    <div id="notes" class="row container-fluid">
-    </div>
-</div>`;
-sidebar.insertAdjacentElement('beforeend', noteHtml);
-        html +=
-            `<div class="list-group list-group-flush border-bottom scrollarea">
-            <div class="align-items-center" data-tab-target="#notePad">
-            <ul class="nav nav-tabs">
-                        <li class="nav-item">
-                        <a href="#" data-tab-target = "#${element}" class="py-5 list-group-item list-group-item-action active bg-success" aria-current="true"> 
-                            ${element} 
-                            \u00A0
-                            \u00A0
-                            <button type="button" class="btn-close btn-close-white float-end tabLinks"
-                            id="${index}" 
-                            onclick="deleteName(this.id)"
-                            aria-label="Close"></button>
-                        </a>
-                    </li>
-                </ul>
-            <div/>
-        <div/>`;
-    });
+    // if (nameObj.length != 0) nameElm.innerHTML = html;
+    // else
+    //     nameElm.innerHTML = `Ready to start writing?`;
+// }
+// function deleteName(index) {
+//     let name = localStorage.getItem("name");
 
-    let nameElm = document.getElementById("name");
+//     if (name == null) nameObj = [];
+//     else nameObj = JSON.parse(name);
 
-    if (nameObj.length != 0) nameElm.innerHTML = html;
-    else
-        nameElm.innerHTML = `Ready to start writing?`;
-}
-function deleteName(index) {
-    let name = localStorage.getItem("name");
+//     nameObj.splice(index, 1);
 
-    if (name == null) nameObj = [];
-    else nameObj = JSON.parse(name);
+//     localStorage.setItem("name",
+//         JSON.stringify(nameObj));
 
-    nameObj.splice(index, 1);
-
-    localStorage.setItem("name",
-        JSON.stringify(nameObj));
-
-    showNotebookName();
-}
+//     showNotebookName();
+// }
 
 
 // function tabLogic(evt, element) {
@@ -132,7 +132,7 @@ function deleteName(index) {
 
 showNotes();
 
-let addBtn = document.getElementById("addBtn");
+let addBtn = document.querySelector(".addBtn");
 addBtn.addEventListener("click", function (e) {
     let addTxt = document.getElementById("addTxt");
     let notes = localStorage.getItem("notes");
@@ -142,7 +142,7 @@ addBtn.addEventListener("click", function (e) {
 
     notesObj.push(addTxt.value);
     localStorage.setItem("notes", JSON.stringify(notesObj));
-    addTxt.value = "";
+    addTxt.value = "";  
 
     showNotes();
 });
@@ -151,10 +151,11 @@ addBtn.addEventListener("click", function (e) {
 // Function to show elements from localStorage
 function showNotes() {
     let notes = localStorage.getItem("notes");
+    let theNoteName = document.querySelector("#addTextN"); 
 
     if (notes == null) notesObj = [];
     else notesObj = JSON.parse(notes);
-
+    // Note ${index + 1} for card title
     let html = "";
 
     notesObj.forEach(function (element, index) {
@@ -162,7 +163,7 @@ function showNotes() {
             style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">
-                        Note ${index + 1}
+                        ${theNoteName.value}
                     </h5>
                     <p class="card-text"> 
                         ${element}
@@ -177,12 +178,12 @@ function showNotes() {
         </div>`;
     });
 
-        // let notesElm = document.getElementById("notes");
+        let notesElm = document.getElementById("notes");
 
-        // if (notesObj.length != 0) notesElm.innerHTML = html;
-        // else
-        //     notesElm.innerHTML = `Nothing to show! 
-        //     Use "Add a Note" section above to add notes.`;
+        if (notesObj.length != 0) notesElm.innerHTML = html;
+        else
+            notesElm.innerHTML = `Nothing to show! 
+            Use "Add a Note" section above to add notes.`;
 }
 
 // Function to delete a note

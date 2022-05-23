@@ -12,11 +12,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dosis&display=swap" rel="stylesheet">
+    <!-- <script src="https://cdn.tiny.cloud/1/y2d57a11p09uppv6te2ypgwsmtfzk4xzfwtqhcx478uc5pq0/tinymce/6/tinymce.min.js"
+        referrerpolicy="origin"></script> -->
 </head>
 
-<body>
+<body class="bg-success">
     <!-- This is the popup for notename creation -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -38,8 +40,31 @@
                 </div>
             </div>
         </div>
+    </div> -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">What do you want to name your Note?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" minlength="0" maxlength="18" size="64" id="addTextN"
+                        placeholder="Default Note Name">
+                    <p> Dear Users,
+                        Right now it the site is in an early stage so if any
+                        issues arise, I am sorry and I hope to fix those issues in the future. 
+                        I hope you enjoy the website.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary addBtn addNoteNameBtn" data-bs-dismiss="modal">Create</button>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="wrapperContent">
+    <div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
             <div class="container-fluid px-3">
                 <a class="navbar-brand" href="homePage.html">The Green Notebook</a>
@@ -49,7 +74,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
+                    <div class="navbar-nav align-items-start">
                         <a class="nav-link active" aria-current="page" href="homePage.html">Home</a>
                         <a class="nav-link" href="notepad.html">Notebook</a>
                         <a class="nav-link" href="about.html">About</a>
@@ -57,9 +82,43 @@
                 </div>
             </div>
         </nav>
-        <div class="container-fluid">
-            <div class="row flex-nowrap">
-                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark vh-100" id="tabsPage">
+    </div>
+    <div class="wrapperContent container-fluid">
+        <div class="">
+            <!-- class='container-fluid' above -->
+            <!-- <div class="flex-nowrap"> -->
+                <!-- class="row" above -->
+                <div class="row">
+                    <div class="col text-center py-4 text-white">
+                        <h1 class="display-1">The Notebook</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="contentWrapper tabContent" data-tab-content>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        Add a Note
+
+                                    </h5>
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="addTxt" rows="3">
+                            </textarea>
+                                    </div>
+                                    <button class="btn btn-primary" style="background-color:green" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        Add Note
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="notes" class="row container-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!-- </div> -->
+        </div>
+        <!-- <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark vh-100" id="tabsPage">
                     <div
                         class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                         <a href="#"
@@ -73,9 +132,9 @@
 
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                </div> -->
+
+
         <!-- <div class="contentWrapper w-75 tabContent" data-tab-content>
                     <div class="card">
                         <div class="card-body">
@@ -156,3 +215,32 @@
             <div id="notes" class="row container-fluid">
             </div>
         </div> -->
+
+
+<!-- <div class="row">
+                    <div class="col text-center py-4 text-white">
+                        <h1 class="display-1">The Notebook</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col tabContent active" data-tab-content>
+                        <form method="post">
+                            <textarea id="addTxt">
+                                Welcome to The Green Notebook
+                            </textarea>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <form>
+                            <button name="submitbtn" id="addBtn"> Save </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div id="notes" class="row container-fluid">
+                        </div>
+                    </div>
+                </div> -->
