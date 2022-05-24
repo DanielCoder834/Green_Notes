@@ -2,40 +2,88 @@
     
 tinymce.init({
     selector: 'textarea#addTxt',
-    plugins: 'save a11ychecker advcode casechange export formatpainter image editimage linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tableofcontents tinycomments tinymcespellchecker',
-    toolbar: 'save a11ycheck addcomment showcomments casechange checklist code export formatpainter image editimage pageembed permanentpen table tableofcontents',
+    plugins: 'a11ychecker advcode casechange export formatpainter image editimage linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tableofcontents tinycomments tinymcespellchecker',
+    toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter image editimage pageembed permanentpen table tableofcontents',
     toolbar_mode: 'floating',
     tinycomments_mode: 'embedded',
     tinycomments_author: 'Author name',
 });
 
-  // let saveBar = tinymce.toolbar.save;
+
+let saveBtn = document.querySelector("#saveBtn");
+saveBtn.addEventListener("click", function () {
+    let myContent = tinymce.get("addTxt").getContent();
+    localStorage.setItem("myContent", myContent);
+})
+let laodBtn = document.querySelector("#loadBtn");
+laodBtn.addEventListener("click", function () {
+    let myContent = localStorage.getItem("myContent");
+    tinymce.get("addTxt").setContent(myContent);
+})
+
   showNotes();
   
-  let addBtn = document.querySelector(".addBtn");
+  let addBtn = document.querySelector(".addBtn"); 
   addBtn.addEventListener("click", function (e) {
-      let addTxt = document.getElementById("addTxt");
-      let notes = localStorage.getItem("notes");
+    let myContent = localStorage.getItem("myContent");
+    let addTextN = localStorage.getItem("addTextN"); 
+
+    let notes = localStorage.getItem("notes");
   
-      if (notes == null) notesObj = [];
-      else notesObj = JSON.parse(notes);
+    if (notes == null) notesObj = [];
+    else notesObj = JSON.parse(notes);
   
-      notesObj.push(addTxt.value);
-      localStorage.setItem("notes", JSON.stringify(notesObj));
-      addTxt.value = "";  
+    if(addTextN == null) addTextNObj = []; 
+    else addTextNObj = JSON.parse(addTextN);
+
+    notesObj.push(myContent);
+    localStorage.setItem("notes", JSON.stringify(notesObj));
+    myContent.value = "";  
   
-      showNotes();
+    localStorage.setItem("addTextN", JSON.stringify(addTextNObj));
+
+    showNotes();
   });
+
+//   let addNoteNameBtn = document.querySelector(".addNoteNameBtn");
+//   addNoteNameBtn.addEventListener("click", function (e) {
+//       let addTextN = document.getElementById("addTextN");
+//       let theNoteName = localStorage.getItem("theNoteName");
   
+//       if (theNoteName == null) theNoteNameObj = [];
+//       else theNoteNameObj = JSON.parse(theNoteName);
   
+//       theNoteNameObj.push(addTextN);
+//       localStorage.setItem("theNoteName", JSON.stringify(theNoteNameObj));
+//       addTextN.value = "";  
+  
+//       showNotes();
+//   });
+  
+//   let saveAllButton = document.querySelector("#saveAllButton");
+//   saveAllButton.addEventListener("click", function () {
+//     let saveAllButtonVal = saveAllButton.value; 
+//     localStorage.setItem("text", saveAllButtonVal); // save the item
+//     var text=localStorage.getItem("text"); // retrieve
+//     document.getElementById('textDiv').innerHTML = text; // display 
+//   })
   // Function to show elements from localStorage
   function showNotes() {
-      let notes = localStorage.getItem("notes");
-      let theNoteName = document.querySelector("#addTextN"); 
-  
+    let notes = localStorage.getItem("notes");
+    //   let theNoteName = localStorage.getItem("theNoteName");
+    let addTextN = localStorage.getItem("addTextN"); 
+    // let theNoteName = document.querySelector("#addTextN").value; 
+    // const theNoteName = localStorage.getItem('theNoteName');
+    // if(theNoteName == null) theNoteNameObj = [];
+    // else theNoteNameObj = JSON.parse(theNoteName);
+    let noteName = document.getElementById('addTextN'); 
+    
       if (notes == null) notesObj = [];
       else notesObj = JSON.parse(notes);
       // Note ${index + 1} for card title
+      if(addTextN == null) addTextNObj = [];
+        else addTextNObj = JSON.parse(addTextN);
+
       let html = "";
   
       notesObj.forEach(function (element, index) {
@@ -43,7 +91,7 @@ tinymce.init({
               style="width: 18rem;">
                   <div class="card-body">
                       <h5 class="card-title">
-                          ${theNoteName.value}
+                        Green Note ${index + 1}
                       </h5>
                       <p class="card-text"> 
                           ${element}
@@ -57,13 +105,14 @@ tinymce.init({
               </div>
           </div>`;
       });
-  
+    //   <input type="text" minlength="0" maxlength="30" size="64" class="w-100" id="noteNam"
+    //   value="Default Note Name">
           let notesElm = document.getElementById("notes");
   
           if (notesObj.length != 0) notesElm.innerHTML = html;
           else
               notesElm.innerHTML = `Nothing to show! 
-              Use "Add a Note" section above to add notes.`;
+              Use "Create the Saved Note" section above to add notes.`;
   }
   
   // Function to delete a note
