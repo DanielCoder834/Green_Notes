@@ -5,13 +5,12 @@ const notesDiv = document.querySelector("#notesDiv")
 document.addEventListener("keydown", function (e) {
   let eventKey = e.key; 
 
-  arrNotes.push(eventKey); 
-  let notes = arrNotes.join('');
-
   if(eventKey.length <= 1) {
+    arrNotes.push(eventKey); 
+    let notes = arrNotes.join('');
     testNotes.textContent = notes;
-  }
-  if(e.code == 'Enter') {
+  } 
+  else if(e.code == 'Enter') {
     const newLi = document.createElement('li')
     notesDiv.append(newLi);
   }
