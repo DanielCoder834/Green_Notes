@@ -1,49 +1,76 @@
 
+let arrNotes = []; 
+const testNotes = document.querySelector("#testNotes"); 
+const notesDiv = document.querySelector("#notesDiv")
+document.addEventListener("keydown", function (e) {
+  let eventKey = e.key; 
+
+  arrNotes.push(eventKey); 
+  let notes = arrNotes.join('');
+
+  if(eventKey.length <= 1) {
+    testNotes.textContent = notes;
+  }
+  if(e.code == 'Enter') {
+    const newLi = document.createElement('li')
+    notesDiv.append(newLi);
+  }
+  if(e.code == 'Backspace') {
+    // let newNotes = notes.substring(0, notes.length - 10);
+    // testNotes.textContent = newNotes;
+  }
+  // testNotes.append(notes); 
+  // console.log(notes);
+  
+})
+ 
+
     
-tinymce.init({
-    selector: 'textarea#addTxt',
-    plugins: 'a11ychecker advcode casechange export formatpainter image editimage linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tableofcontents tinycomments tinymcespellchecker',
-    toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter image editimage pageembed permanentpen table tableofcontents',
-    toolbar_mode: 'floating',
-    tinycomments_mode: 'embedded',
-    tinycomments_author: 'Author name',
-});
+// tinymce.init({
+//     selector: 'textarea#addTxt',
+//     plugins: 'a11ychecker advcode casechange export formatpainter image editimage linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tableofcontents tinycomments tinymcespellchecker',
+//     toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter image editimage pageembed permanentpen table tableofcontents',
+//     toolbar_mode: 'floating',
+//     tinycomments_mode: 'embedded',
+//     tinycomments_author: 'Author name',
+// });
 
 
-let saveBtn = document.querySelector("#saveBtn");
-saveBtn.addEventListener("click", function () {
-    let myContent = tinymce.get("addTxt").getContent();
-    localStorage.setItem("myContent", myContent);
-})
-let laodBtn = document.querySelector("#loadBtn");
-laodBtn.addEventListener("click", function () {
-    let myContent = localStorage.getItem("myContent");
-    tinymce.get("addTxt").setContent(myContent);
-})
 
-  showNotes();
+// let saveBtn = document.querySelector("#saveBtn");
+// saveBtn.addEventListener("click", function () {
+//     let myContent = tinymce.get("addTxt").getContent();
+//     localStorage.setItem("myContent", myContent);
+// })
+// let laodBtn = document.querySelector("#loadBtn");
+// laodBtn.addEventListener("click", function () {
+//     let myContent = localStorage.getItem("myContent");
+//     tinymce.get("addTxt").setContent(myContent);
+// })
+
+//   showNotes();
   
-  let addBtn = document.querySelector(".addBtn"); 
-  addBtn.addEventListener("click", function (e) {
-    let myContent = localStorage.getItem("myContent");
-    let addTextN = localStorage.getItem("addTextN"); 
+//   let addBtn = document.querySelector(".addBtn"); 
+//   addBtn.addEventListener("click", function (e) {
+//     let myContent = localStorage.getItem("myContent");
+//     let addTextN = localStorage.getItem("addTextN"); 
 
-    let notes = localStorage.getItem("notes");
+//     let notes = localStorage.getItem("notes");
   
-    if (notes == null) notesObj = [];
-    else notesObj = JSON.parse(notes);
+//     if (notes == null) notesObj = [];
+//     else notesObj = JSON.parse(notes);
   
-    if(addTextN == null) addTextNObj = []; 
-    else addTextNObj = JSON.parse(addTextN);
+//     if(addTextN == null) addTextNObj = []; 
+//     else addTextNObj = JSON.parse(addTextN);
 
-    notesObj.push(myContent);
-    localStorage.setItem("notes", JSON.stringify(notesObj));
-    myContent.value = "";  
+//     notesObj.push(myContent);
+//     localStorage.setItem("notes", JSON.stringify(notesObj));
+//     myContent.value = "";  
   
-    localStorage.setItem("addTextN", JSON.stringify(addTextNObj));
+//     localStorage.setItem("addTextN", JSON.stringify(addTextNObj));
 
-    showNotes();
-  });
+//     showNotes();
+//   });
 
 //   let addNoteNameBtn = document.querySelector(".addNoteNameBtn");
 //   addNoteNameBtn.addEventListener("click", function (e) {

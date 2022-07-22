@@ -16,7 +16,7 @@
         referrerpolicy="origin"></script>
 </head>
 
-<body class="bg-success">
+<body class="">
     <!-- This is the popup for notename creation -->
     <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -90,11 +90,23 @@
             <!-- <div class="flex-nowrap"> -->
             <!-- class="row" above -->
             <div class="row">
-                <div class="col text-center py-4 text-white">
+                <div class="col text-center py-4" id="notebookHeading">
                     <h1 class="display-1">The Notebook</h1>
                 </div>
             </div>
             <div class="row">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <div class="text-align py-3" id="notesDiv">
+                        <p class="d-block text-break" id="testNotes">
+
+                        </p>
+                    </div>
+                    <!-- <input type="text" onkeypress="return myKeyPress(event)"/> -->
+                </div>
+                <div class="col-2"></div>
+            </div>
+            <!-- <div class="row">
                 <div class="col">
                     <textarea id="addTxt">
                         Write Here
@@ -111,14 +123,14 @@
                 <div class="col py-3">
                     <button class="bg-light text-success addBtn">Create the Saved Note</button>
                 </div>
-            </div>
+            </div> -->
             <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col">
                     <div id="notes" class="row container-fluid"></div>
                 </div>
             </div>
-            </div>
+            </div> -->
             <!-- <div class="row">
                 <div class="col">
                     <button id="saveAllButton">Save All</button>

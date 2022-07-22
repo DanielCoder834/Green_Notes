@@ -6,6 +6,7 @@ body {
     padding: 0;
     font-family: 'Dosis', sans-serif;
     min-height: 100%;
+    background-color: white;
 }
 .SiteHeader {
     position: absolute;
@@ -77,4 +78,8 @@ nav ul li a:hover{
 }
 .noteTxt {
     font-weight: normal;
+}
+
+#notebookHeading{
+    color: #4B8673;
 }
