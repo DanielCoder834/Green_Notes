@@ -48,6 +48,55 @@ p {
     height: 200px;
 }
 
+#titleButtonText {
+    text-align: center;
+}
+
+#toNotepadDiv {
+    font-size: 40px;
+    text-align: center;
+}
+
+#toNotepadLink {
+    background: none;
+    color: green;
+    border: 3.5px solid white;
+    text-decoration: none;
+    /* no underline */
+    padding: 10px;
+    transition: 1s;
+}
+
+#toNotepadLink:hover {
+    color: white;
+    /* border-color: green; */
+}
+
+/* #greenNotesExplainDiv {
+
+} */
+#greenNotesExplain {
+    color: white;
+    font-size: 40px;
+    text-align: center;
+}
+
+/* .middleText {
+    display: flex;
+    justify-content: center;
+} */
+footer {
+    position: absolute;
+    right: 15px;
+    overflow: hidden;
+    color: white;
+}
+
+.lauchPageFooter {
+    top: 920px;
+    margin-bottom: 0px;
+}
+
 /* .animatedHeading{
   color: #D64933; 
   font-size: 10vh; 
@@ -124,51 +173,3 @@ p {
     top: 50%;
     left: 50%;
 } */
-#titleButtonText {
-    text-align: center;
-}
-
-#toNotepadDiv {
-    font-size: 40px;
-    text-align: center;
-}
-
-#toNotepadLink {
-    background: none;
-    color: green;
-    border: 3.5px solid white;
-    text-decoration: none;
-    /* no underline */
-    padding: 10px;
-    transition: 1s;
-}
-
-#toNotepadLink:hover {
-    color: white;
-    /* border-color: green; */
-}
-
-/* #greenNotesExplainDiv {
-
-} */
-#greenNotesExplain {
-    color: white;
-    font-size: 40px;
-    text-align: center;
-}
-
-/* .middleText {
-    display: flex;
-    justify-content: center;
-} */
-footer {
-    position: absolute;
-    right: 15px;
-    overflow: hidden;
-    color: white;
-}
-
-.lauchPageFooter {
-    top: 920px;
-    margin-bottom: 0px;
-}
