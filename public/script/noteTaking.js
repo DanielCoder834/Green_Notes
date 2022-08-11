@@ -2,28 +2,62 @@
 let arrNotes = []; 
 const testNotes = document.querySelector("#testNotes"); 
 const notesDiv = document.querySelector("#notesDiv")
-document.addEventListener("keydown", function (evt) {
-  let eventKey = evt.key; 
-  arrNotes.push(eventKey); 
-  arrNotes = arrNotes.filter(evt => evt !== 'Backspace');
-  arrNotes = arrNotes.filter(evt => evt !== 'Enter');
-  let notes = arrNotes.join('');
+// document.addEventListener("keydown", function (evt) {
+//   let eventKey = evt.key; 
+//   arrNotes.push(eventKey); 
+//   arrNotes = arrNotes.filter(evt => evt !== 'Backspace');
+//   arrNotes = arrNotes.filter(evt => evt !== 'Enter');
+//   arrNotes = arrNotes.filter(evt => evt !== 'Tab');
+//   arrNotes = arrNotes.filter(evt => evt !== 'CapsLock');
+//   arrNotes = arrNotes.filter(evt => evt !== 'Shift');
+//   arrNotes = arrNotes.filter(evt => evt !== 'Control');
+//   arrNotes = arrNotes.filter(evt => evt !== 'Alt');
+//   arrNotes = arrNotes.filter(evt => evt !== 'PageUp');
+//   arrNotes = arrNotes.filter(evt => evt !== 'PageDown');
+//   arrNotes = arrNotes.filter(evt => evt !== 'Home');
+//   arrNotes = arrNotes.filter(evt => evt !== 'Insert');
+//   arrNotes = arrNotes.filter(evt => evt !== 'End');
+//   arrNotes = arrNotes.filter(evt => evt !== 'Delete');
+//   arrNotes = arrNotes.filter(evt => evt !== 'Escape');
+//   arrNotes = arrNotes.filter(evt => evt !== 'Pause');
+//   arrNotes = arrNotes.filter(evt => evt !== 'ScrollLock');
+//   arrNotes = arrNotes.filter(evt => evt !== 'ArrowUp');
+//   arrNotes = arrNotes.filter(evt => evt !== 'ArrowDown');
+//   arrNotes = arrNotes.filter(evt => evt !== 'ArrowLeft');
+//   arrNotes = arrNotes.filter(evt => evt !== 'ArrowRight');
+//   arrNotes = arrNotes.filter(evt => evt !== 'ContextMenu');
+//   arrNotes = arrNotes.filter(evt => evt !== 'F1');
+//   arrNotes = arrNotes.filter(evt => evt !== 'F2');
+//   arrNotes = arrNotes.filter(evt => evt !== 'F3');
+//   arrNotes = arrNotes.filter(evt => evt !== 'F4');
+//   arrNotes = arrNotes.filter(evt => evt !== 'F5');
+//   arrNotes = arrNotes.filter(evt => evt !== 'F6');
+//   arrNotes = arrNotes.filter(evt => evt !== 'F7');
+//   arrNotes = arrNotes.filter(evt => evt !== 'F8');
+//   arrNotes = arrNotes.filter(evt => evt !== 'F9');
+//   arrNotes = arrNotes.filter(evt => evt !== 'F10');
+//   arrNotes = arrNotes.filter(evt => evt !== 'F11');
+//   arrNotes = arrNotes.filter(evt => evt !== 'F12');
+//   arrNotes = arrNotes.filter(evt => evt !== 'AudioVolumeDown');
+//   arrNotes = arrNotes.filter(evt => evt !== 'AudioVolumeUp');
 
-    if(evt.code == 'Enter') {
-    const newLi = document.createElement('li')
-    notesDiv.append(newLi);
-  } 
-  else if(evt.code == 'Backspace') {
-    let newNotes = notes.substring(0, notes.length - 1);
-    testNotes.textContent = newNotes;
-  }
-  else {
-    testNotes.textContent = notes;
-  }
-  // testNotes.append(notes); 
-  // console.log(notes);
+//   let notes = arrNotes.join('');
+
+//     if(evt.code == 'Enter') {
+//     const newLi = document.createElement('li')
+//     notesDiv.append(newLi);
+//   } 
+//   else if(evt.code == 'Backspace') {
+//     let newNotes = notes.substring(0, notes.length - 1);
+//     testNotes.textContent = newNotes;
+//   }
+//   else {
+//     testNotes.textContent = notes;
+//   }
+//   testNotes.append(notes); 
+//   console.log(notes);
   
-})
+// })
 
 
 
