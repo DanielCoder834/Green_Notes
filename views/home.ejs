@@ -11,37 +11,105 @@
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dosis&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <img src="images/marita-kavelashvili-ugnrXk1129g-unsplash.jpg" alt="A tree covered mountain"
         class="backgroundImg img-fluid">
     <div class="homePageContainer w-auto">
-        <div class="row w-auto">
-            <div class="col-8">
-                <p class="spacingTitle"></p>
+        <div class="frontPageContainer">
+            <div class="row w-auto">
+                <div class="col-8">
+                    <p class="spacingTitle"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 col-lg-8 offset-lg-2 py-4 text-center" id="titleButton">
+                    <h1 id="titleButtonText" class="animatedTitle">The Green Notebook</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4 offset-4 text-center mt-1" id="greenNotesExplainDiv">
+                    <h2 id="greenNotesExplain" class="animatedTitle">The Tree Planting Notebook</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 offset-2 mt-4" id="toNotepadDiv">
+                    <a href="/notebook" class="toNotepadButton" id="toNotepadLink">Start Typing</a>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-6 col-lg-8 offset-lg-2 py-5" id="titleButton">
-                <h1 id="titleButtonText" class="animatedTitle">The Green Notebook</h1>
+        <div class="spacingAbout"></div>
+        <div class="aboutUsContainer">
+            <div class="row w-auto">
+                <div class="col-8">
+                    <p class="spacingTitle"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 col-lg-8 offset-lg-2 py-5 text-center" id="">
+                    <h1 id="aboutUsTitle" class="">About Us</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 offset-2 mt-0 text-center" id="">
+                    <p id="aboutUsExplaination" class="aboutUsP"> What is the Green Notebook? The Green Notebook is a
+                        100% non-profit organization.
+                        We use the money from ads to fund the website and then donate the rest to tree-planting
+                        charities, One Tree Planted,
+                        Trees for the Future, Trees for Cities, and International Tree Foundation. There is still work
+                        to be done on the website.
+                        If there is any issues, suggestions, or concerns, you can leave a comment below.
+                    </p>
+                </div>
+                <div class="col-6 offset-3 mt-2 text-center">
+                    <p class="aboutUsP">
+                        Thank you for choosing the Greennote Book
+                    </p>
+                </div>
+            </div>
+            <div class="row w-auto">
+                <div class="col-8">
+                    <p class="spacingTitle"></p>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-4 offset-4 mt-0" id="greenNotesExplainDiv">
-                <h2 id="greenNotesExplain" class="animatedHeading">The Tree Planting Notebook</h2>
+        <div class="contactFormContainer">
+            <div class="row w-auto">
+                <div class="col-8">
+                    <p class="spacingContactForm"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-10 offset-1 mt-2 text-center">
+                    <form action="" id="contactForm">
+                        <ul>
+                            <li>
+                                <label for="name" id="nameLabel">Name:</label>
+                                <input type="text" id="name" name="user_name">
+                            </li>
+                            <li>
+                                <label for="mail" id="mailLabel">E-mail:</label>
+                                <input type="email" id="mail" name="user_email">
+                            </li>
+                            <li>
+                                <label for="msg" id="msgLabel" class="text-center">Message:</label>
+                                <textarea id="msg" rows='2'name="user_message"></textarea>
+                            </li>
+                            <li class="button">
+                                <button type="submit">Send your message</button>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+            <div class="row w-auto">
+                <div class="col-8">
+                    <p class="spacingContactFormButtom"></p>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-8 offset-2 mt-5" id="toNotepadDiv">
-                <a href="/notebook" id="toNotepadLink">Start Typing</a>
-            </div>
-        </div>
-    </div>
-    <br>
-    <div class="aboutUsContainer">
-        <p>gio</p>
     </div>
     <!-- <footer class="lauchPageFooter position-absolute bottom-0 end-0">Image by Marita Kavelashvili</footer>
     </div>  -->

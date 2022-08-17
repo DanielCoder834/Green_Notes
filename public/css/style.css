@@ -1,84 +1,93 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Dosis', sans-serif;
-    background-color: green;
+  margin: 0;
+  padding: 0;
+  font-family: 'Amatic SC', cursive;
+  background-color: green;
 }
 
 h1 {
-    color: #fff;
-    font-size: 100px;
+  color: #606c38;
+  font-size: 150px;
 }
 
 p {
-    color: #fff;
-    font-size: 11px;
+  color: #fff;
+  font-size: 11px;
 }
 
 #SignUp {
-    position: relative;
-    left: 200px;
-    border-radius: 15%;
-    padding: 10px;
-    border: 1px solid white;
-    background: none;
-    color: white;
-    font-size: 17.5px;
+  position: relative;
+  left: 200px;
+  border-radius: 15%;
+  padding: 10px;
+  border: 1px solid white;
+  background: none;
+  color: white;
+  font-size: 17.5px;
 }
 
 #SignUp:hover {
-    color: green;
-    background-color: white;
+  color: green;
+  background-color: white;
 }
 
 .backgroundImg {
-    background-size: cover;
-    background-image: none;
-    min-height: 100%;
-    min-width: 1024px;
-    width: 100%;
-    height: auto;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
+  background-size: cover;
+  background-image: none;
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
 .spacingTitle {
-    height: 200px;
+  height: 150px;
 }
-
+/* 
 #titleButtonText {
-    text-align: center;
-}
+  
+} */
 
 #toNotepadDiv {
-    font-size: 40px;
-    text-align: center;
+  font-size: 40px;
+  text-align: center;
 }
 
 #toNotepadLink {
-    background: none;
-    color: green;
-    border: 3.5px solid white;
-    text-decoration: none;
-    /* no underline */
-    padding: 10px;
-    transition: 1s;
+  background: none;
+  color: #fefae0;
+  border: 3.5px solid white;
+  border-radius: 10%;
+  /* box-shadow: 10px 10px 5px white; */
+  text-decoration: none;
+  /* no underline */
+  padding: 10px;
+  transition: 1s;
+  /* font-style: italic; */
 }
 
 #toNotepadLink:hover {
-    color: white;
-    /* border-color: green; */
+  color: #283618;
+  font-weight: 700;
+  /* border-color: green; */
 }
 
 /* #greenNotesExplainDiv {
 
 } */
 #greenNotesExplain {
-    color: white;
-    font-size: 40px;
-    text-align: center;
+  color: #fefae0; 
+  font-size: 60px;
+  /* font-style: italic; */
+  /* text-align: center; */
+}
+
+.spacingAbout {
+  height: 150px;
 }
 
 /* .middleText {
@@ -93,108 +102,52 @@ p {
 } */
 
 .lauchPageFooter {
-    top: 920px;
-    margin-bottom: 0px;
+  top: 920px;
+  margin-bottom: 0px;
 }
 
-/* .animatedHeading { */
-  /* overflow: hidden; Ensures the content is not revealed until the animation */
-  /* border-right: .15em solid orange; The typwriter cursor */
-  /* white-space: nowrap; Keeps the content on a single line */
-  /* margin: 0 auto; Gives that scrolling effect as the typing happens */
-  /* letter-spacing: .15em; Adjust as needed */
-  /* animation: 
-    typing 3.5s steps(40, end),
-    blink-caret .75s step-end infinite;
-} */
-
-/* The typing effect */
-/* @keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-} */
-
-/* The typewriter cursor effect */
-/* @keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: orange; }
-} */
-
-
-
-/* .animatedHeading{
-  color: #D64933; 
-  font-size: 10vh; 
-  white-space: nowrap;
-  overflow: hidden;
-  width: 30em;
-  animation: title 7s steps(70, end); 
-  margin-bottom: 40px;
+#aboutUsTitle {
+  color: #606c38;
 }
 
-@keyframes title{ 
-  from { width: 0; opacity: 0.0;}
-  to { opacity: 1.0; } 
-}  */
-
-
-
-
-
-
-/* .animatedHeading{
-    font-family: monospace;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 2px solid;
-      animation: type 2s steps(12),
-        blink .5s step-end infinite alternate;
-      color: green;
-    }
-    
-    @keyframes type {
-      from { width: 0 }
-      to { width: 110% }
-    }
-    
-    @keyframes blink {
-      50%{
-        border-color: transparent;
-      }
-    }
-     */
-
-     /* @keyframes typing {
-        0% {
-          width: 0px;
-        }
-        100% {
-          width: 100%;
-        }
-      }
-      
-      @keyframes blinking {
-        0%,
-        100% {
-          border-color: transparent;
-        }
-        50% {
-          border-color: #1d3701;
-        }
-      }
-      .animatedHeading {
-        --typing-steps: 14;
-        margin: 2rem auto;
-        overflow: hidden;
-        white-space: nowrap;
-        letter-spacing: 3px;
-        border-right: 3px solid #154107;
-        animation: typing 2s steps(var(--typing-steps)),
-          blinking 0.7s steps(1) infinite;
-      } */
-
-
-/* #titleButton {
-    top: 50%;
-    left: 50%;
+.aboutUsP{
+  color: #FEFAE0;
+  font-size: 40px;
+  /* font-weight: 600; */
+}
+.spacingContactForm {
+  height: 200px;
+}
+/* #nameLabel{
+  color: #FEFAE0;
+  font-size: 40px; 
 } */
+label {
+  color: #FEFAE0;
+  font-size: 40px; 
+}
+#contactForm {
+  border: 1px solid whitesmoke;
+}
+#name {
+  text-decoration: none;
+  font-size:20px;
+}
+#msg {
+  width: 75%;
+  font-size: 2em;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.spacingContactFormBottum {
+  height: 300px;
+}
+li {
+  list-style-type: none;
+}
+.button {
+  font-size: 30px;
+}
+#msgLabel{
+  font-size: 50px;
+}

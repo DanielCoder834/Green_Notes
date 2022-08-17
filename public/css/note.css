@@ -84,13 +84,15 @@ nav ul li a:hover{
     color: #4B8673;
 }
 textarea {
-    border: none;
+    /* border: none;
     overflow: auto;
-    outline: none;
+    outline: none; */
 
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
 
     resize: none; /*remove the resize handle on the bottom right*/
+    max-width: 95%;
+    max-height: 95%;
 }
