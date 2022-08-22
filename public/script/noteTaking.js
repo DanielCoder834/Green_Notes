@@ -8,64 +8,53 @@ const notesDiv = document.querySelector("#notesDiv");
 
 let noteCount = 0;
 let movedPlaceForText = false;
-let movedPlaceForAfterOne = false;  
+let movedPlaceForAfterOne = false;
 
 // let arrNotes = []; 
-let numOfLeftArrowPressed = 1; 
+let numOfLeftArrowPressed = 1;
+let numOfLeftArrowPressedPlusOne = 2;
 
 document.addEventListener("keydown", async function (evt) {
   let eventKey = evt.key;
   noteCount = testNotes.children.length;
 
-  let currentSpanNote = document.getElementById(`noteCount:${noteCount}`); 
+  let currentSpanNote = document.getElementById(`noteCount:${noteCount}`);
   let lastSpanNote = document.getElementById(`noteCount:${noteCount - 1}`);
   let secondToLastSpanNote = document.getElementById(`noteCount:${noteCount - 2}`);
-  let spanNoteTypeChar = document.querySelector(`.startTypeChar`); 
+  let spanNoteTypeChar = document.querySelector(`.startTypeChar`);
 
   if (eventKey.length === 1 && eventKey !== ' ') {
     const spanNotes = document.createElement('span');
     spanNotes.setAttribute('id', `noteCount:${noteCount}`); //Notecount can break if someone changes the notecount manually
     testNotes.append(spanNotes);
-    // noteCount++; 
-    // document.getElementById(`noteCount:${noteCount}`).classList.add('startTypeChar');
-    // if(lastSpanNote !== null) {
-    //   lastSpanNote.classList.remove('startTypeChar');
-    // }
-    // } else if(document.getElementById(`noteCount:${noteCount}`))
-    // else {
-      //Error handling
-    // } 
-    if(noteCount == 0) {
+    if (noteCount == 0) {
       spanNotes.append(eventKey);
       document.getElementById(`noteCount:${noteCount}`).classList.add('startTypeChar');
-    } 
-    else if(noteCount !== 0 && movedPlaceForText == false) {
+    }
+    else if (noteCount !== 0 && movedPlaceForText == false) {
       document.getElementById(`noteCount:${noteCount}`).classList.add('startTypeChar');
       spanNotes.append(eventKey);
-      lastSpanNote.classList.remove('startTypeChar'); 
-    } 
-    else if(movedPlaceForText) {
-      console.log('hi');
+      lastSpanNote.classList.remove('startTypeChar');
+    }
+    else if (movedPlaceForText) {
+      // console.log('hi');
       spanNoteTypeChar.insertAdjacentElement("afterend", spanNotes); //Refactor a better way to find where to find
-      spanNotes.textContent = eventKey; 
-      spanNoteTypeChar.classList.remove('startTypeChar'); 
-      spanNotes.classList.add('startTypeChar'); 
-      document.getElementById(`noteCount:${noteCount}`).id = `noteCount:${noteCount-1}`; 
+      spanNotes.textContent = eventKey;
+      spanNoteTypeChar.classList.remove('startTypeChar');
+      spanNotes.classList.add('startTypeChar');
+      document.getElementById(`noteCount:${noteCount}`).id = `noteCount:${noteCount - 1}`;
       // currentSpanNote.classList.add('startTypeChar');
       movedPlaceForText = true;
-      console.log(document.querySelector(`.startTypeChar`));
-    } 
-    else{
+      // console.log(document.querySelector(`.startTypeChar`));
+    }
+    else {
       //Error Handling
     }
-    // for (let i = 0; i <= noteCount; i++) {
-    //   currentSpanNote.id = `noteCount:${i}`;  
-    // } 
   }
 
   if (evt.code == 'Backspace') {
     //Needs error handling: For(Uncaught (in promise) TypeError: Cannot read properties of null (reading 'classList'))
-    if(noteCount !== 1) {
+    if (noteCount !== 1) {
       secondToLastSpanNote.classList.add('startTypeChar');
     } else {
       lastSpanNote.classList.add('startTypeChar');
@@ -73,27 +62,42 @@ document.addEventListener("keydown", async function (evt) {
     noteCount--;
     testNotes.removeChild(currentSpanNote);
   }
-  // if (eventKey === ' ' || eventKey === 'Spacebar') {
-  //   noteCount--;
-  //   currentSpanNote.append(' ')
-  //   // ' ' is standard, 'Spacebar' was used by IE9 and Firefox < 37
-  //   console.log('Space pressed');
-  // }
+  if (eventKey === ' ' || eventKey === 'Spacebar') {
+    noteCount--;
+    currentSpanNote.append(' ')
+    // ' ' is standard, 'Spacebar' was used by IE9 and Firefox < 37
+    console.log('Space pressed');
+  }
 
   if (evt.code == 'ArrowLeft') {
-    if(noteCount !== 1) {
-      document.getElementById(`noteCount:${noteCount - 2}`).classList.add('startTypeChar');
-      document.getElementById(`noteCount:${noteCount - 1}`).classList.remove('startTypeChar'); //This Line needs to be fixed
+    let selectedElm = document.querySelector('.startTypeChar');
+    // let selectedElmId = selectedElm.id; 
+    if (selectedElm.id !== `noteCount:0`) {
+      selectedElm.classList.remove('startTypeChar'); //This Line needs to be fixed
+      selectedElm.previousSibling.classList.add('startTypeChar');
     } else {
-      lastSpanNote.classList.add('startTypeChar');
+      selectedElm.classList.add('startTypeChar');
     }
-    document.getElementById(`noteCount:${noteCount-1}`).classList.add('afterOne');
-    // document.getElementById(`noteCount:${noteCount-1}`).id = `noteCount:${noteCount}`; 
-    console.log(document.getElementById(`noteCount:${noteCount-1}`));
-    // spanNotes.id = `noteCount:${i}`;
+    // document.getElementById(`noteCount:${noteCount-numOfLeftArrowPressed}`).classList.add('afterOne');
+    // console.log(document.getElementById(`noteCount:${noteCount-1}`));
     movedPlaceForText = true;
     movedPlaceForAfterOne = true;
     // numOfLeftArrowPressed++; 
+    // numOfLeftArrowPressedPlusOne++;
+  }
+  if (evt.code == 'ArrowRight') {
+    if (noteCount !== 0) {
+      document.querySelector('.startTypeChar').nextSibling.classList.add('startTypeChar');
+      document.querySelector('.startTypeChar').classList.remove('startTypeChar'); //This Line needs to be fixed
+    } else {
+      lastSpanNote.classList.add('startTypeChar');
+    }
+    // document.getElementById(`noteCount:${noteCount-1}`).classList.add('afterOne');
+    // console.log(document.getElementById(`noteCount:${noteCount-1}`));
+    movedPlaceForText = true;
+    movedPlaceForAfterOne = true;
+    // numOfLeftArrowPressed++; 
+    // numOfLeftArrowPressedPlusOne++;
   }
 
   if (evt.code == 'Enter') {
@@ -104,16 +108,33 @@ document.addEventListener("keydown", async function (evt) {
   // noteCount = testNotes.children.length;
   // if(spanNotes)
   // console.log(noteCount);
-  console.log();
+
+
+
+
+  //ToDo: Need to sort notecount should not rely on another class since it would be mixed up with a big text file
+
+  // console.log();
   // document.querySelector('.afterOne').id !== null 
-  if(movedPlaceForAfterOne) document.querySelector('.afterOne').id = `noteCount:${noteCount}`;
+  // if(movedPlaceForAfterOne) {
+  //   console.log('Hello');
+  //   document.querySelectorAll('.afterOne').id = `noteCount:${noteCount + 1}`; 
+  // }
   // else if(document.querySelector('.afterOne').id == null) console.log('being a bum');
-  else {
-    //Future Error Handling
-  }
+  // else {
+  //Future Error Handling
+  // }
 })
 
-
+document.addEventListener("click", async function (evt) {
+  if (testNotes.contains(evt.target)) {
+    document.querySelector('.startTypeChar').classList.remove('startTypeChar');
+    evt.target.classList.add('startTypeChar');
+    console.log(evt.target);
+  } else {
+    console.log('buttStuff');
+  }
+})
 
 
 
