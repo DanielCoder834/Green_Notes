@@ -7,46 +7,93 @@ const testNotes = document.querySelector("#testNotes");
 const notesDiv = document.querySelector("#notesDiv");
 
 let noteCount = 0;
+let movedPlaceForText = false;
+let movedPlaceForAfterOne = false;  
+
+// let arrNotes = []; 
+let numOfLeftArrowPressed = 1; 
 
 document.addEventListener("keydown", async function (evt) {
   let eventKey = evt.key;
   noteCount = testNotes.children.length;
 
+  let currentSpanNote = document.getElementById(`noteCount:${noteCount}`); 
+  let lastSpanNote = document.getElementById(`noteCount:${noteCount - 1}`);
+  let secondToLastSpanNote = document.getElementById(`noteCount:${noteCount - 2}`);
+  let spanNoteTypeChar = document.querySelector(`.startTypeChar`); 
+
   if (eventKey.length === 1 && eventKey !== ' ') {
     const spanNotes = document.createElement('span');
     spanNotes.setAttribute('id', `noteCount:${noteCount}`); //Notecount can break if someone changes the notecount manually
     testNotes.append(spanNotes);
-    // noteCount++;
-    spanNotes.append(eventKey);
-    document.getElementById(`noteCount:${noteCount}`).classList.add('startTypeChar');
-    if(document.getElementById(`noteCount:${noteCount - 1}`) !== null) {
-      document.getElementById(`noteCount:${noteCount - 1}`).classList.remove('startTypeChar');
-    } 
-    else {
+    // noteCount++; 
+    // document.getElementById(`noteCount:${noteCount}`).classList.add('startTypeChar');
+    // if(lastSpanNote !== null) {
+    //   lastSpanNote.classList.remove('startTypeChar');
+    // }
+    // } else if(document.getElementById(`noteCount:${noteCount}`))
+    // else {
       //Error handling
+    // } 
+    if(noteCount == 0) {
+      spanNotes.append(eventKey);
+      document.getElementById(`noteCount:${noteCount}`).classList.add('startTypeChar');
     } 
+    else if(noteCount !== 0 && movedPlaceForText == false) {
+      document.getElementById(`noteCount:${noteCount}`).classList.add('startTypeChar');
+      spanNotes.append(eventKey);
+      lastSpanNote.classList.remove('startTypeChar'); 
+    } 
+    else if(movedPlaceForText) {
+      console.log('hi');
+      spanNoteTypeChar.insertAdjacentElement("afterend", spanNotes); //Refactor a better way to find where to find
+      spanNotes.textContent = eventKey; 
+      spanNoteTypeChar.classList.remove('startTypeChar'); 
+      spanNotes.classList.add('startTypeChar'); 
+      document.getElementById(`noteCount:${noteCount}`).id = `noteCount:${noteCount-1}`; 
+      // currentSpanNote.classList.add('startTypeChar');
+      movedPlaceForText = true;
+      console.log(document.querySelector(`.startTypeChar`));
+    } 
+    else{
+      //Error Handling
+    }
+    // for (let i = 0; i <= noteCount; i++) {
+    //   currentSpanNote.id = `noteCount:${i}`;  
+    // } 
   }
+
   if (evt.code == 'Backspace') {
     //Needs error handling: For(Uncaught (in promise) TypeError: Cannot read properties of null (reading 'classList'))
     if(noteCount !== 1) {
-      document.getElementById(`noteCount:${noteCount - 2}`).classList.add('startTypeChar');
+      secondToLastSpanNote.classList.add('startTypeChar');
     } else {
-      document.getElementById(`noteCount:${noteCount - 1}`).classList.add('startTypeChar');
+      lastSpanNote.classList.add('startTypeChar');
     }
     noteCount--;
-    testNotes.removeChild(document.getElementById(`noteCount:${noteCount}`));
+    testNotes.removeChild(currentSpanNote);
   }
-  if (eventKey === ' ' || eventKey === 'Spacebar') {
-    noteCount--;
-    document.getElementById(`noteCount:${noteCount}`).append(' ')
-    // ' ' is standard, 'Spacebar' was used by IE9 and Firefox < 37
-    console.log('Space pressed');
-  }
+  // if (eventKey === ' ' || eventKey === 'Spacebar') {
+  //   noteCount--;
+  //   currentSpanNote.append(' ')
+  //   // ' ' is standard, 'Spacebar' was used by IE9 and Firefox < 37
+  //   console.log('Space pressed');
+  // }
 
   if (evt.code == 'ArrowLeft') {
-    console.log(noteCount);
-    // noteCount -= 2;
-    console.log(noteCount);
+    if(noteCount !== 1) {
+      document.getElementById(`noteCount:${noteCount - 2}`).classList.add('startTypeChar');
+      document.getElementById(`noteCount:${noteCount - 1}`).classList.remove('startTypeChar'); //This Line needs to be fixed
+    } else {
+      lastSpanNote.classList.add('startTypeChar');
+    }
+    document.getElementById(`noteCount:${noteCount-1}`).classList.add('afterOne');
+    // document.getElementById(`noteCount:${noteCount-1}`).id = `noteCount:${noteCount}`; 
+    console.log(document.getElementById(`noteCount:${noteCount-1}`));
+    // spanNotes.id = `noteCount:${i}`;
+    movedPlaceForText = true;
+    movedPlaceForAfterOne = true;
+    // numOfLeftArrowPressed++; 
   }
 
   if (evt.code == 'Enter') {
@@ -54,6 +101,16 @@ document.addEventListener("keydown", async function (evt) {
     testNotes.append(newLi);
   }
   // console.log(noteCount);
+  // noteCount = testNotes.children.length;
+  // if(spanNotes)
+  // console.log(noteCount);
+  console.log();
+  // document.querySelector('.afterOne').id !== null 
+  if(movedPlaceForAfterOne) document.querySelector('.afterOne').id = `noteCount:${noteCount}`;
+  // else if(document.querySelector('.afterOne').id == null) console.log('being a bum');
+  else {
+    //Future Error Handling
+  }
 })
 
 
