@@ -1,6 +1,7 @@
 html {
     height: 100%;
 }
+
 body {
     margin: 0;
     padding: 0;
@@ -8,14 +9,16 @@ body {
     min-height: 100%;
     background-color: white;
 }
+
 .SiteHeader {
     position: absolute;
-    top:0px;
+    top: 0px;
 }
 
 div {
     margin-bottom: 0;
 }
+
 nav {
     flex: 1;
     text-align: right;
@@ -27,6 +30,7 @@ nav ul li {
     margin: 60px;
     margin-left: 180px;
 }
+
 nav ul li a {
     text-decoration: none;
     color: green;
@@ -34,15 +38,18 @@ nav ul li a {
     transition: 1s;
     font-weight: 2000;
 }
-nav ul li a:hover{
+
+nav ul li a:hover {
     color: white;
 }
+
 #plusNotebookOption {
     background-color: white;
     color: green;
     border: 1px solid green;
     border-radius: 10%;
 }
+
 #plusNotebookOption:hover {
     background-color: rgba(0, 128, 0, 0.435);
 }
@@ -76,23 +83,36 @@ nav ul li a:hover{
     border: 1px solid black;
     padding: auto;
 }
+
 .noteTxt {
     font-weight: normal;
 }
 
-#notebookHeading{
+#notebookHeading {
     color: #4B8673;
 }
-textarea {
-    /* border: none;
-    overflow: auto;
-    outline: none; */
 
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
 
-    resize: none; /*remove the resize handle on the bottom right*/
-    max-width: 95%;
-    max-height: 95%;
+/* Needs rework. Blinks on the letter and too big plus not responsive */
+.blinkyCursor {
+    animation-name: blinkCursor;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(1, 0, 0, 1);
+    animation-duration: 0.75s;
+    display: inline-block;
+    width: 0.2em;
+    height: 1em;
+    margin-left: 0.2em;
+    box-shadow: 0 0 10px rgba(255, 99, 71, .5);
+    background: rgba(255, 99, 71, 1.0);
+}
+
+@keyframes blinkCursor {
+    from {
+        opacity: 1.0
+    }
+
+    to {
+        opacity: 0.0
+    }
 }
