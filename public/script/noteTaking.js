@@ -3,12 +3,14 @@
 //   'Delete', 'Escape', 'Pause', 'ScrollLock', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9',
 //   'F10', 'F11', 'F12', 'AudioVolumeUp', 'AudioVolumeDown', 'NumLock', 'Meta', 'ContextMenu']
 
+// const e = require("express");
+
 const testNotes = document.querySelector("#testNotes");
 const notesDiv = document.querySelector("#notesDiv");
 
 let noteCount = 0;
 let movedPlaceForText = false;
-let enterPressed = false; 
+let enterPressed = false;
 // let movedPlaceForAfterOne = false;
 
 // let arrNotes = []; 
@@ -16,40 +18,45 @@ let enterPressed = false;
 // let numOfLeftArrowPressedPlusOne = 2;
 
 document.addEventListener("keydown", async function (evt) {
+  console.log(enterPressed);
+  // let element = document.querySelector(`.startTypeChar`);
+  // Array.from(element.testNotes.children).indexOf(element)
   let eventKey = evt.key;
   //Need to find a way to only account for stuff with text
-  noteCount = testNotes.getElementsByTagName("*").length; 
+  // noteCount = document.querySelectorAll('.myElement > *');
+  noteCount = testNotes.getElementsByTagName('span').length;
 
   //Old Way
   // noteCount = testNotes.children.length;
 
-  let currentSpanNote = document.getElementById(`noteCount:${noteCount}`);
-  let lastSpanNote = document.getElementById(`noteCount:${noteCount - 1}`);
-  // let secondToLastSpanNote = document.getElementById(`noteCount:${noteCount - 2}`);
+  let currentSpanNote = document.querySelector(`[data-noteid="${noteCount}"]`)
+  let lastSpanNote = document.querySelector(`[data-noteid="${noteCount - 1}"]`)
+  // let secondToLastSpanNote = document.getElementById(`${noteCount - 2}`);
   let spanNoteTypeChar = document.querySelector(`.startTypeChar`);
 
   if (eventKey.length === 1 && eventKey !== ' ') {
     const spanNotes = document.createElement('span');
-    spanNotes.setAttribute('id', `noteCount:${noteCount}`); //Notecount can break if someone changes the notecount manually
-    if(enterPressed == false) {
-      console.log('hi');
+    spanNotes.setAttribute('data-noteid', `${noteCount}`); //Notecount can break if someone changes the notecount manually
+    if (enterPressed == false) {
+      // console.log('hi');
       testNotes.append(spanNotes); //Issue when pressing Enter because testNotes
     }
-    else if(enterPressed) {
-      document.querySelector('.enterPress').append(spanNotes); 
+    else if (enterPressed) {
+      document.querySelector('.enterPress').append(spanNotes);
     }
     if (noteCount == 0) {
       spanNotes.append(eventKey);
-      document.getElementById(`noteCount:${noteCount}`).classList.add('startTypeChar');
+      document.querySelector(`[data-noteid="${noteCount}"]`).classList.add('startTypeChar');
     }
     else if (noteCount !== 0 && movedPlaceForText == false) {
-      document.getElementById(`noteCount:${noteCount}`).classList.add('startTypeChar');
+      document.querySelector(`[data-noteid="${noteCount}"]`).classList.add('startTypeChar');
       spanNotes.append(eventKey);
 
       //My attempt to change the above two lines. Help
       // document.querySelector('.startTypeChar').append(eventKey);
-      // document.getElementById(`noteCount:${noteCount}`).classList.add('startTypeChar');
-      document.getElementById(`noteCount:${noteCount - 1}`).classList.remove('startTypeChar');
+      // document.getElementById(`${noteCount}`).classList.add('startTypeChar');
+      document.querySelector(`[data-noteid="${noteCount - 1}"]`).classList.remove('startTypeChar');
+
     }
     else if (movedPlaceForText) {
       // console.log('hi');
@@ -57,7 +64,7 @@ document.addEventListener("keydown", async function (evt) {
       spanNotes.textContent = eventKey;
       spanNoteTypeChar.classList.remove('startTypeChar');
       spanNotes.classList.add('startTypeChar');
-      document.getElementById(`noteCount:${noteCount}`).id = `noteCount:${noteCount - 1}`;
+      // document.querySelector(`[data-noteid="${noteCount}"]`) = document.querySelector(`[data-noteid="${noteCount - 1}"]`);
       // currentSpanNote.classList.add('startTypeChar');
       movedPlaceForText = true;
       // console.log(document.querySelector(`.startTypeChar`));
@@ -72,11 +79,13 @@ document.addEventListener("keydown", async function (evt) {
     if (noteCount !== 1) {
       selectedElmBackspace.classList.remove('startTypeChar'); //This Line needs to be fixed
       selectedElmBackspace.previousSibling.classList.add('startTypeChar');
-    } else {
-      lastSpanNote.classList.add('startTypeChar');
     }
+    // else {
+    //   lastSpanNote.classList.add('startTypeChar');
+    // }
     // noteCount--;
-    testNotes.removeChild(selectedElmBackspace);
+    if(enterPressed == false) testNotes.removeChild(selectedElmBackspace);
+    else if(enterPressed) document.querySelector('.enterPress').removeChild(selectedElmBackspace);
     //Needs a way to delete enter elements
   }
   if (eventKey === ' ' || eventKey === 'Spacebar') {
@@ -89,14 +98,14 @@ document.addEventListener("keydown", async function (evt) {
   if (evt.code == 'ArrowLeft') {
     let selectedElm = document.querySelector('.startTypeChar');
     // let selectedElmId = selectedElm.id; 
-    if (selectedElm.id !== `noteCount:0`) {
+    if (selectedElm.id !== `0`) {
       selectedElm.classList.remove('startTypeChar'); //This Line needs to be fixed
       selectedElm.previousSibling.classList.add('startTypeChar');
     } else {
       selectedElm.classList.add('startTypeChar');
     }
-    // document.getElementById(`noteCount:${noteCount-numOfLeftArrowPressed}`).classList.add('afterOne');
-    // console.log(document.getElementById(`noteCount:${noteCount-1}`));
+    // document.getElementById(`${noteCount-numOfLeftArrowPressed}`).classList.add('afterOne');
+    // console.log(document.getElementById(`${noteCount-1}`));
     movedPlaceForText = true;
     movedPlaceForAfterOne = true;
     // numOfLeftArrowPressed++; 
@@ -109,26 +118,26 @@ document.addEventListener("keydown", async function (evt) {
     } else {
       lastSpanNote.classList.add('startTypeChar');
     }
-    // document.getElementById(`noteCount:${noteCount-1}`).classList.add('afterOne');
-    // console.log(document.getElementById(`noteCount:${noteCount-1}`));
+    // document.getElementById(`${noteCount-1}`).classList.add('afterOne');
+    // console.log(document.getElementById(`${noteCount-1}`));
     movedPlaceForText = true;
     movedPlaceForAfterOne = true;
     // numOfLeftArrowPressed++; 
     // numOfLeftArrowPressedPlusOne++;
   }
   if (evt.code == 'Enter') {
-    enterPressed = true; 
+    enterPressed = true;
     document.querySelector('.startTypeChar').classList.remove('startTypeChar'); //This Line needs to be fixed
     const spanNotes = document.createElement('span');
-    spanNotes.setAttribute('id', `noteCount:${noteCount}`); //Notecount can break if someone changes the notecount manually
+    spanNotes.setAttribute('data-noteid', `${noteCount}`); //Notecount can break if someone changes the notecount manually
     spanNotes.classList.add('startTypeChar');
 
     const newUl = document.createElement('ul');
     const newLi = document.createElement('li');
-    newLi.classList.add('enterPress'); 
+    newLi.classList.add('enterPress');
 
     testNotes.append(newUl);
-    newUl.append(newLi); 
+    newUl.append(newLi);
     // newLi.append(spanNotes);
   }
   // console.log(noteCount);
@@ -145,12 +154,15 @@ document.addEventListener("keydown", async function (evt) {
   // document.querySelector('.afterOne').id !== null 
   // if(movedPlaceForAfterOne) {
   //   console.log('Hello');
-  //   document.querySelectorAll('.afterOne').id = `noteCount:${noteCount + 1}`; 
+  //   document.querySelectorAll('.afterOne').id = `${noteCount + 1}`; 
   // }
   // else if(document.querySelector('.afterOne').id == null) console.log('being a bum');
   // else {
   //Future Error Handling
   // }
+
+  // console.log(HTMLCollection.item);
+
 })
 
 document.addEventListener("click", async function (evt) {
@@ -159,7 +171,7 @@ document.addEventListener("click", async function (evt) {
     evt.target.classList.add('startTypeChar');
     console.log(evt.target);
   } else {
-    console.log('buttStuff');
+    console.log('not the target');
   }
 })
 
