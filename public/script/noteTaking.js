@@ -11,126 +11,108 @@ const notesDiv = document.querySelector("#notesDiv");
 let noteCount = 0;
 let movedPlaceForText = false;
 let enterPressed = false;
-// let movedPlaceForAfterOne = false;
-
-// let arrNotes = []; 
-// let numOfLeftArrowPressed = 1;
-// let numOfLeftArrowPressedPlusOne = 2;
 
 document.addEventListener("keydown", async function (evt) {
-  console.log(enterPressed);
-  // let element = document.querySelector(`.startTypeChar`);
-  // Array.from(element.testNotes.children).indexOf(element)
   let eventKey = evt.key;
-  //Need to find a way to only account for stuff with text
-  // noteCount = document.querySelectorAll('.myElement > *');
-  noteCount = testNotes.getElementsByTagName('span').length;
-
+  // noteCount = testNotes.getElementsByTagName('span').length;
   //Old Way
   // noteCount = testNotes.children.length;
 
-  let currentSpanNote = document.querySelector(`[data-noteid="${noteCount}"]`)
   let lastSpanNote = document.querySelector(`[data-noteid="${noteCount - 1}"]`)
-  // let secondToLastSpanNote = document.getElementById(`${noteCount - 2}`);
   let spanNoteTypeChar = document.querySelector(`.startTypeChar`);
 
   if (eventKey.length === 1 && eventKey !== ' ') {
+    // Adds a cool effect
+    // const spanCursor = document.createElement('span');
+    // spanCursor.classList.add('blinkyCursor'); 
+
     const spanNotes = document.createElement('span');
-    spanNotes.setAttribute('data-noteid', `${noteCount}`); //Notecount can break if someone changes the notecount manually
+    // spanNotes.setAttribute('data-noteid', `${noteCount}`); //Notecount can break if someone changes the notecount manually
     if (enterPressed == false) {
-      // console.log('hi');
       testNotes.append(spanNotes); //Issue when pressing Enter because testNotes
+      // Adds a cool effect
+      // testNotes.append(spanCursor);
     }
     else if (enterPressed) {
       document.querySelector('.enterPress').append(spanNotes);
+      // Adds a cool effect
+      // document.querySelector('.enterPress').append(spanCursor);
     }
-    if (noteCount == 0) {
-      spanNotes.append(eventKey);
-      document.querySelector(`[data-noteid="${noteCount}"]`).classList.add('startTypeChar');
+    //testNotes.getElementsByTagName('span').length == 1
+    if (document.querySelectorAll(`.startTypeChar`).length <= 0) {
+      for (let i = 0; i < testNotes.getElementsByTagName('span').length; i++) {
+        testNotes.getElementsByTagName('span')[i].setAttribute('data-noteid', `${i}`);
+      }
+      document.querySelector(`[data-noteid="${noteCount}"]`).classList.add('startTypeChar'); //Can't rely on notecount
+      document.querySelector(`.startTypeChar`).insertAdjacentElement("beforebegin", spanNotes);
+      spanNotes.textContent = eventKey;
+      // Adds a cool effect
+      // spanNoteTypeChar.insertAdjacentElement("afterend", spanCursor);
+      console.log('hi');
     }
-    else if (noteCount !== 0 && movedPlaceForText == false) {
-      document.querySelector(`[data-noteid="${noteCount}"]`).classList.add('startTypeChar');
+    else if (testNotes.getElementsByTagName('span').length !== 0 && movedPlaceForText == false) {
+      for (let i = 0; i < testNotes.getElementsByTagName('span').length; i++) {
+        testNotes.getElementsByTagName('span')[i].setAttribute('data-noteid', `${i}`);
+      }
+      document.querySelector('.startTypeChar').classList.remove('startTypeChar');
+      document.querySelector(`[data-noteid="${testNotes.getElementsByTagName('span').length - 1}"]`).classList.add('startTypeChar');
       spanNotes.append(eventKey);
-
-      //My attempt to change the above two lines. Help
-      // document.querySelector('.startTypeChar').append(eventKey);
-      // document.getElementById(`${noteCount}`).classList.add('startTypeChar');
-      document.querySelector(`[data-noteid="${noteCount - 1}"]`).classList.remove('startTypeChar');
-
+      console.log('ypo');
     }
     else if (movedPlaceForText) {
-      // console.log('hi');
+      for (let i = 0; i < testNotes.getElementsByTagName('span').length; i++) {
+        testNotes.getElementsByTagName('span')[i].setAttribute('data-noteid', `${i}`);
+      }
       spanNoteTypeChar.insertAdjacentElement("afterend", spanNotes); //Refactor a better way to find where to find
       spanNotes.textContent = eventKey;
       spanNoteTypeChar.classList.remove('startTypeChar');
       spanNotes.classList.add('startTypeChar');
-      // document.querySelector(`[data-noteid="${noteCount}"]`) = document.querySelector(`[data-noteid="${noteCount - 1}"]`);
-      // currentSpanNote.classList.add('startTypeChar');
       movedPlaceForText = true;
-      // console.log(document.querySelector(`.startTypeChar`));
     }
     else {
       //Error Handling
     }
   }
-
-  if (evt.code == 'Backspace') {
-    let selectedElmBackspace = document.querySelector('.startTypeChar');
-    if (noteCount !== 1) {
-      selectedElmBackspace.classList.remove('startTypeChar'); //This Line needs to be fixed
-      selectedElmBackspace.previousSibling.classList.add('startTypeChar');
-    }
-    // else {
-    //   lastSpanNote.classList.add('startTypeChar');
-    // }
-    // noteCount--;
-    if(enterPressed == false) testNotes.removeChild(selectedElmBackspace);
-    else if(enterPressed) document.querySelector('.enterPress').removeChild(selectedElmBackspace);
-    //Needs a way to delete enter elements
-  }
   if (eventKey === ' ' || eventKey === 'Spacebar') {
-    noteCount--;
-    currentSpanNote.append(' ')
-    // ' ' is standard, 'Spacebar' was used by IE9 and Firefox < 37
+    let selectedElmSpaceBar = document.querySelector('.startTypeChar');
+    let space = document.createTextNode(" ");
+    testNotes.append(space);
+    // document.querySelector('.startTypeChar').nextSibling.classList.add('startTypeChar');
     console.log('Space pressed');
   }
 
   if (evt.code == 'ArrowLeft') {
     let selectedElm = document.querySelector('.startTypeChar');
-    // let selectedElmId = selectedElm.id; 
-    if (selectedElm.id !== `0`) {
+    if (selectedElm !== document.querySelector(`[data-noteid="0"]`)) {
       selectedElm.classList.remove('startTypeChar'); //This Line needs to be fixed
       selectedElm.previousSibling.classList.add('startTypeChar');
-    } else {
+    } else if (selectedElm == document.querySelector(`[data-noteid="0"]`)) {
+      console.log('Hiwe');
+      selectedElm.classList.remove('startTypeChar');
+    }
+    else {
       selectedElm.classList.add('startTypeChar');
     }
-    // document.getElementById(`${noteCount-numOfLeftArrowPressed}`).classList.add('afterOne');
-    // console.log(document.getElementById(`${noteCount-1}`));
     movedPlaceForText = true;
-    movedPlaceForAfterOne = true;
-    // numOfLeftArrowPressed++; 
-    // numOfLeftArrowPressedPlusOne++;
   }
   if (evt.code == 'ArrowRight') {
-    if (noteCount !== 0) {
+    if (testNotes.getElementsByTagName('span').length !== 1) {
       document.querySelector('.startTypeChar').nextSibling.classList.add('startTypeChar');
       document.querySelector('.startTypeChar').classList.remove('startTypeChar'); //This Line needs to be fixed
-    } else {
+    } else if (testNotes.getElementsByTagName('span').length == 1) {
+      selectedElmBackspace.classList.remove('startTypeChar');
+    }
+    else {
       lastSpanNote.classList.add('startTypeChar');
     }
-    // document.getElementById(`${noteCount-1}`).classList.add('afterOne');
-    // console.log(document.getElementById(`${noteCount-1}`));
     movedPlaceForText = true;
-    movedPlaceForAfterOne = true;
-    // numOfLeftArrowPressed++; 
-    // numOfLeftArrowPressedPlusOne++;
   }
   if (evt.code == 'Enter') {
     enterPressed = true;
-    document.querySelector('.startTypeChar').classList.remove('startTypeChar'); //This Line needs to be fixed
-    const spanNotes = document.createElement('span');
-    spanNotes.setAttribute('data-noteid', `${noteCount}`); //Notecount can break if someone changes the notecount manually
-    spanNotes.classList.add('startTypeChar');
+    // document.querySelector('.startTypeChar').classList.remove('startTypeChar'); //This Line needs to be fixed
+    // const spanNotes = document.createElement('span');
+    // spanNotes.setAttribute('data-noteid', `${noteCount}`); //Notecount can break if someone changes the notecount manually
+    // spanNotes.classList.add('startTypeChar');
 
     const newUl = document.createElement('ul');
     const newLi = document.createElement('li');
@@ -139,30 +121,43 @@ document.addEventListener("keydown", async function (evt) {
     testNotes.append(newUl);
     newUl.append(newLi);
     // newLi.append(spanNotes);
+    for (let i = 0; i < testNotes.getElementsByTagName('ul').length; i++) {
+      testNotes.getElementsByTagName('ul')[i].setAttribute('data-ulnoteid', `${i}`);
+    }
   }
-  // console.log(noteCount);
-  // noteCount = testNotes.children.length;
-  // if(spanNotes)
-  // console.log(noteCount);
-
-
-
-
-  //ToDo: Need to sort notecount should not rely on another class since it would be mixed up with a big text file
-
-  // console.log();
-  // document.querySelector('.afterOne').id !== null 
-  // if(movedPlaceForAfterOne) {
-  //   console.log('Hello');
-  //   document.querySelectorAll('.afterOne').id = `${noteCount + 1}`; 
-  // }
-  // else if(document.querySelector('.afterOne').id == null) console.log('being a bum');
-  // else {
-  //Future Error Handling
-  // }
-
-  // console.log(HTMLCollection.item);
-
+  if (evt.code == 'Backspace') {
+    let selectedElmBackspace = document.querySelector('.startTypeChar');
+    if (selectedElmBackspace !== document.querySelector(`[data-noteid="0"]`)) {
+      if (enterPressed == false) {
+        selectedElmBackspace.classList.remove('startTypeChar'); //This Line needs to be fixed
+        selectedElmBackspace.previousSibling.classList.add('startTypeChar');
+      }
+      else if (enterPressed == true) {
+        if (selectedElmBackspace.previousElementSibling !== null) {
+          selectedElmBackspace.classList.remove('startTypeChar'); //This Line needs to be fixed
+          selectedElmBackspace.previousSibling.classList.add('startTypeChar');
+        }
+        else if (selectedElmBackspace.previousSibling == null) {
+          document.querySelector(`.startTypeChar`).parentElement.remove();
+          testNotes.removeChild(document.querySelector(`[data-ulnoteid="0"]`));
+          document.querySelector(`[data-noteid="${testNotes.getElementsByTagName('span').length - 1}"]`).classList.add('startTypeChar');
+          enterPressed = false;
+        }
+      }
+      else {
+        //Error Handling
+      }
+    }
+    else if (selectedElmBackspace == document.querySelector(`[data-noteid="0"]`)) {
+      selectedElmBackspace.classList.remove('startTypeChar');
+    }
+    else {
+      lastSpanNote.classList.add('startTypeChar');
+    }
+    if (enterPressed == false) testNotes.removeChild(selectedElmBackspace); //Error Occuring Here
+    else if (enterPressed && selectedElmBackspace.previousElementSibling !== null) document.querySelector('.enterPress').removeChild(selectedElmBackspace);
+    //Needs a way to delete enter elements
+  }
 })
 
 document.addEventListener("click", async function (evt) {
@@ -174,33 +169,3 @@ document.addEventListener("click", async function (evt) {
     console.log('not the target');
   }
 })
-
-
-
-
-
-
-
-
-
-
-
-// function insertAtCursor(myField, myValue) {
-//   //IE support
-//   if (document.selection) {
-//       myField.focus();
-//       sel = document.selection.createRange();
-//       sel.text = myValue;
-//   }
-//   //MOZILLA and others
-//   else if (myField.selectionStart || myField.selectionStart == '0') {
-//       var startPos = myField.selectionStart;
-//       var endPos = myField.selectionEnd;
-//       myField.value = myField.value.substring(0, startPos)
-//           + myValue
-//           + myField.value.substring(endPos, myField.value.length);
-//   } else {
-//       myField.value += myValue;
-//   }
-// }
-
