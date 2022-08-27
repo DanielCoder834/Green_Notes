@@ -107,7 +107,7 @@ document.addEventListener("keydown", async function (evt) {
     movedPlaceForText = true;
   }
   if (evt.code == 'Enter') {
-    enterPressed = true;
+    
     // document.querySelector('.startTypeChar').classList.remove('startTypeChar'); //This Line needs to be fixed
     // const spanNotes = document.createElement('span');
     // spanNotes.setAttribute('data-noteid', `${noteCount}`); //Notecount can break if someone changes the notecount manually
@@ -118,20 +118,27 @@ document.addEventListener("keydown", async function (evt) {
     if(document.querySelector('.enterPress') !== null) document.querySelector('.enterPress').classList.remove('enterPress');
     newLi.classList.add('enterPress');
 
-    testNotes.append(newUl);
-    newUl.append(newLi);
-    // newLi.append(spanNotes);
+    if(enterPressed == false) {
+      testNotes.append(newUl);
+      console.log('ddsds');
+    }
     for (let i = 0; i < testNotes.getElementsByTagName('ul').length; i++) {
       testNotes.getElementsByTagName('ul')[i].setAttribute('data-ulnoteid', `${i}`);
     }
+    document.querySelector(`[data-ulnoteid="${0}"]`).append(newLi);
+    // newLi.append(spanNotes);
     const tempSpanNote = document.createElement('span'); 
     newLi.append(tempSpanNote);
+    for (let i = 0; i < testNotes.getElementsByTagName('li').length; i++) {
+      testNotes.getElementsByTagName('li')[i].setAttribute('data-linoteid', `${i}`);
+    }
     for (let i = 0; i < testNotes.getElementsByTagName('span').length; i++) {
       testNotes.getElementsByTagName('span')[i].setAttribute('data-noteid', `${i}`);
     }
     console.log(testNotes.getElementsByTagName('span').length - 2);
     document.querySelector(`[data-noteid="${testNotes.getElementsByTagName('span').length - 2}"]`).classList.remove('startTypeChar');
     tempSpanNote.classList.add('startTypeChar');
+    enterPressed = true;
   }
   if (evt.code == 'Backspace') {
     let selectedElmBackspace = document.querySelector('.startTypeChar');
@@ -148,10 +155,15 @@ document.addEventListener("keydown", async function (evt) {
           document.querySelector('.enterPress').removeChild(selectedElmBackspace);
         }
         else if (selectedElmBackspace.previousSibling == null) {
-          document.querySelector(`.startTypeChar`).parentElement.remove();
-          testNotes.removeChild(document.querySelector(`[data-ulnoteid="0"]`));
+          console.log(document.querySelector(`.startTypeChar`));
+          document.querySelector(`.enterPress`).remove();
+          if(testNotes.getElementsByTagName('li').length !== 0) document.querySelector(`[data-linoteid="${testNotes.getElementsByTagName('li').length - 1}"]`).classList.add('enterPress')
+          // testNotes.removeChild(document.querySelector(`[data-ulnoteid="0"]`));
           document.querySelector(`[data-noteid="${testNotes.getElementsByTagName('span').length - 1}"]`).classList.add('startTypeChar');
-          enterPressed = false;
+          if(testNotes.getElementsByTagName('li').length == 0) {
+            enterPressed = false;
+            testNotes.removeChild(document.querySelector(`[data-ulnoteid="${testNotes.getElementsByTagName('ul').length - 1}"]`));
+          }
         }
       }
       else {
@@ -160,6 +172,7 @@ document.addEventListener("keydown", async function (evt) {
     }
     else if (selectedElmBackspace == document.querySelector(`[data-noteid="0"]`)) {
       selectedElmBackspace.classList.remove('startTypeChar');
+      testNotes.removeChild(selectedElmBackspace);
     }
     else {
       lastSpanNote.classList.add('startTypeChar');
