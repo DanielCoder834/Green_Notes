@@ -56,8 +56,7 @@ document.addEventListener("keydown", async function (evt) {
       }
       document.querySelector('.startTypeChar').classList.remove('startTypeChar');
       document.querySelector(`[data-noteid="${testNotes.getElementsByTagName('span').length - 1}"]`).classList.add('startTypeChar');
-      spanNotes.append(eventKey);
-      console.log('ypo');
+      document.querySelector('.startTypeChar').append(eventKey);
     }
     else if (movedPlaceForText) {
       for (let i = 0; i < testNotes.getElementsByTagName('span').length; i++) {
@@ -75,8 +74,8 @@ document.addEventListener("keydown", async function (evt) {
   }
   if (eventKey === ' ' || eventKey === 'Spacebar') {
     let selectedElmSpaceBar = document.querySelector('.startTypeChar');
-    let space = document.createTextNode(" ");
-    testNotes.append(space);
+    let space = '&nbsp;';
+    selectedElmSpaceBar.insertAdjacentHTML("afterend", space);
     // document.querySelector('.startTypeChar').nextSibling.classList.add('startTypeChar');
     console.log('Space pressed');
   }
@@ -116,6 +115,7 @@ document.addEventListener("keydown", async function (evt) {
 
     const newUl = document.createElement('ul');
     const newLi = document.createElement('li');
+    if(document.querySelector('.enterPress') !== null) document.querySelector('.enterPress').classList.remove('enterPress');
     newLi.classList.add('enterPress');
 
     testNotes.append(newUl);
@@ -124,6 +124,14 @@ document.addEventListener("keydown", async function (evt) {
     for (let i = 0; i < testNotes.getElementsByTagName('ul').length; i++) {
       testNotes.getElementsByTagName('ul')[i].setAttribute('data-ulnoteid', `${i}`);
     }
+    const tempSpanNote = document.createElement('span'); 
+    newLi.append(tempSpanNote);
+    for (let i = 0; i < testNotes.getElementsByTagName('span').length; i++) {
+      testNotes.getElementsByTagName('span')[i].setAttribute('data-noteid', `${i}`);
+    }
+    console.log(testNotes.getElementsByTagName('span').length - 2);
+    document.querySelector(`[data-noteid="${testNotes.getElementsByTagName('span').length - 2}"]`).classList.remove('startTypeChar');
+    tempSpanNote.classList.add('startTypeChar');
   }
   if (evt.code == 'Backspace') {
     let selectedElmBackspace = document.querySelector('.startTypeChar');
@@ -131,11 +139,13 @@ document.addEventListener("keydown", async function (evt) {
       if (enterPressed == false) {
         selectedElmBackspace.classList.remove('startTypeChar'); //This Line needs to be fixed
         selectedElmBackspace.previousSibling.classList.add('startTypeChar');
+        testNotes.removeChild(selectedElmBackspace); 
       }
       else if (enterPressed == true) {
         if (selectedElmBackspace.previousElementSibling !== null) {
           selectedElmBackspace.classList.remove('startTypeChar'); //This Line needs to be fixed
           selectedElmBackspace.previousSibling.classList.add('startTypeChar');
+          document.querySelector('.enterPress').removeChild(selectedElmBackspace);
         }
         else if (selectedElmBackspace.previousSibling == null) {
           document.querySelector(`.startTypeChar`).parentElement.remove();
@@ -154,8 +164,6 @@ document.addEventListener("keydown", async function (evt) {
     else {
       lastSpanNote.classList.add('startTypeChar');
     }
-    if (enterPressed == false) testNotes.removeChild(selectedElmBackspace); //Error Occuring Here
-    else if (enterPressed && selectedElmBackspace.previousElementSibling !== null) document.querySelector('.enterPress').removeChild(selectedElmBackspace);
     //Needs a way to delete enter elements
   }
 })
