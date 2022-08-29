@@ -92,6 +92,9 @@ nav ul li a:hover {
     color: #4B8673;
 }
 
+.bolder {
+    font-weight: 700;
+}
 
 /* Needs rework. Blinks on the letter and too big plus not responsive */
 .blinkyCursor {
