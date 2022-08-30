@@ -13,8 +13,8 @@ const notesDiv = document.querySelector("#notesDiv");
 let noteCount = 0;
 let movedPlaceForText = false;
 let enterPressed = false;
-let clickedOn = false; 
-let controlPressed = false; 
+let clickedOn = false;
+let controlPressed = false;
 
 document.addEventListener("keydown", async function (evt) {
   let eventKey = evt.key;
@@ -34,7 +34,7 @@ document.addEventListener("keydown", async function (evt) {
     const spanNotes = document.createElement('span');
     // spanNotes.setAttribute('data-noteid', `${noteCount}`); //Notecount can break if someone changes the notecount manually
     if (enterPressed == false) {
-      if(document.querySelectorAll(`.startTypeChar`).length <= 0) testNotes.append(spanNotes);
+      if (document.querySelectorAll(`.startTypeChar`).length <= 0) testNotes.append(spanNotes);
       else document.querySelector(`.startTypeChar`).insertAdjacentElement("afterend", spanNotes);
       // Adds a cool effect
       // testNotes.append(spanCursor);
@@ -61,10 +61,10 @@ document.addEventListener("keydown", async function (evt) {
       for (let i = 0; i < testNotes.getElementsByTagName('span').length; i++) {
         testNotes.getElementsByTagName('span')[i].setAttribute('data-noteid', `${i}`);
       }
-      if(clickedOn) document.querySelector('.startTypeChar').append(eventKey);
+      if (clickedOn) document.querySelector('.startTypeChar').append(eventKey);
       document.querySelector('.startTypeChar').classList.remove('startTypeChar');
       document.querySelector(`[data-noteid="${testNotes.getElementsByTagName('span').length - 1}"]`).classList.add('startTypeChar');
-      if(!clickedOn) document.querySelector('.startTypeChar').append(eventKey); 
+      if (!clickedOn) document.querySelector('.startTypeChar').append(eventKey);
     }
     else if (movedPlaceForText) {
       for (let i = 0; i < testNotes.getElementsByTagName('span').length; i++) {
@@ -80,14 +80,23 @@ document.addEventListener("keydown", async function (evt) {
       //Error Handling
     }
   }
-  if(evt.ctrlKey && eventKey === 'b') {
+  if (evt.ctrlKey && eventKey === 'b') {
+    console.log(document.querySelectorAll(`[data-noteid="${/\d/g}"]`));
+    console.log('test');
     controlPressed = true;
-    // 
-    let currentNotes = document.querySelectorAll(testNotes.children.hasAttribute('`[data-noteid=0]'));
-    if(currentNotes.matches(':hover')) {
-      console.log('ds');
-      document.querySelector(`.startTypeChar`).classList.add('bolder'); 
+    if(document.querySelectorAll(testNotes.hasAttribute(`[data-noteid="${/\d/g}"]`))) {
+      console.log('succuss');
     }
+    document.querySelectorAll(`[data-noteid="${/\d/g}"]`).onmouseover = function () {
+      console.log('test2');
+      document.querySelector(`[data-noteid="${/\d/g}"]`).classList.add('bolder');
+    };
+    controlPressed = false;
+    // let currentNotes = document.querySelector(testNotes.children.hasAttribute('`[data-noteid=0]'));
+    // if(currentNotes.matches(':hover')) {
+    //   console.log('ds');
+
+    // }
   }
   if (eventKey === ' ' || eventKey === 'Spacebar') {
     let selectedElmSpaceBar = document.querySelector('.startTypeChar');
@@ -203,9 +212,9 @@ document.addEventListener("click", async function (evt) {
     document.querySelector('.startTypeChar').classList.remove('startTypeChar'); //Try to add a querySelectorAll without errors
     evt.target.classList.add('startTypeChar');
     console.log(enterPressed);
-    document.querySelector('.enterPress').classList.remove('enterPress');
+    if(document.querySelector('.enterPress') !== null) document.querySelector('.enterPress').classList.remove('enterPress');
     evt.target.parentElement.classList.add('enterPress');
-    clickedOn = true; 
+    clickedOn = true;
   } else {
     console.log('not the target');
   }
