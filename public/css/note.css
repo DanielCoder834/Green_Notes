@@ -119,3 +119,7 @@ nav ul li a:hover {
         opacity: 0.0
     }
 }
+span:hover {
+    color: blue;
+    
+}

@@ -1,16 +1,8 @@
-
-// const unTypeables = ['Backspace', 'Enter', 'Tab', 'CapsLock', 'Shift', 'Control', 'Alt', 'PageUp', 'PageDown', 'Home', 'Insert', 'End',
-//   'Delete', 'Escape', 'Pause', 'ScrollLock', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9',
-//   'F10', 'F11', 'F12', 'AudioVolumeUp', 'AudioVolumeDown', 'NumLock', 'Meta', 'ContextMenu']
-
-// const e = require("express");
-
-// const e = require("express");
-
 const testNotes = document.querySelector("#testNotes");
-const notesDiv = document.querySelector("#notesDiv");
 
 let noteCount = 0;
+let orderOfNoteID = [];
+
 let movedPlaceForText = false;
 let enterPressed = false;
 let clickedOn = false;
@@ -81,12 +73,26 @@ document.addEventListener("keydown", async function (evt) {
     }
   }
   if (evt.ctrlKey && eventKey === 'b') {
-    console.log(document.querySelectorAll(`[data-noteid="${/\d/g}"]`));
+    boldThing();
+    for (let i = 0; i < testNotes.getElementsByTagName('span').length; i++) {
+      testNotes.getElementsByTagName('span')[i].setAttribute('data-noteid', `${i}`);
+      if (testNotes.getElementsByTagName('span')[i].getAttribute('data-noteid', `${i}`) == window.getSelection()) {
+        console.log('hi');
+      }
+      // if((testNotes.getElementsByTagName('span')[i].getAttribute('data-noteid', `${i}`)).querySelector(':hover')) {
+      //   console.log('ioh');
+      //   testNotes.getElementsByTagName('span')[i].getAttribute('data-noteid', `${i}`).match(':hover').classList.add('bolder');
+      // }
+      // orderOfNoteID.push(testNotes.getElementsByTagName('span')[i].getAttribute('data-noteid', `${i}`));
+    }
+    // console.log(orderOfNoteID);
+    // console.log(document.querySelectorAll(`[data-noteid="${/\d/g}"]`));
     console.log('test');
     controlPressed = true;
-    if(document.querySelectorAll(testNotes.hasAttribute(`[data-noteid="${/\d/g}"]`))) {
-      console.log('succuss');
-    }
+    // if(document.querySelectorAll(testNotes.hasAttribute(`[data-noteid="${Math.min(orderOfNoteID), Math.max(orderOfNoteID)}"]`))) {
+    //   console.log('succuss');
+    // }
+    // if(document.querySelectorAll(testNotes.hasAttribute(`[data-noteid="${Math.min(orderOfNoteID), Math.max(orderOfNoteID)}"]`)).matches(':hover')) console.log('iefd');
     document.querySelectorAll(`[data-noteid="${/\d/g}"]`).onmouseover = function () {
       console.log('test2');
       document.querySelector(`[data-noteid="${/\d/g}"]`).classList.add('bolder');
@@ -100,8 +106,10 @@ document.addEventListener("keydown", async function (evt) {
   }
   if (eventKey === ' ' || eventKey === 'Spacebar') {
     let selectedElmSpaceBar = document.querySelector('.startTypeChar');
-    let space = '&nbsp;';
-    selectedElmSpaceBar.insertAdjacentHTML("afterend", space);
+    let space = document.createElement('span');
+    space.textContent == '&nbsp';
+    //let space = '&nbsp;;
+    selectedElmSpaceBar.insertAdjacentElement("afterend", selectedElmSpaceBar);
     // document.querySelector('.startTypeChar').nextSibling.classList.add('startTypeChar');
     console.log('Space pressed');
   }
@@ -113,7 +121,7 @@ document.addEventListener("keydown", async function (evt) {
       selectedElm.previousSibling.classList.add('startTypeChar');
     } else if (selectedElm == document.querySelector(`[data-noteid="0"]`)) {
       console.log('Hiwe');
-      selectedElm.classList.remove('startTypeChar');
+      // selectedElm.classList.remove('startTypeChar');
     }
     else {
       selectedElm.classList.add('startTypeChar');
@@ -121,10 +129,15 @@ document.addEventListener("keydown", async function (evt) {
     movedPlaceForText = true;
   }
   if (evt.code == 'ArrowRight') {
-    if (testNotes.getElementsByTagName('span').length !== 1) {
+    for (let i = 0; i < testNotes.getElementsByTagName('span').length; i++) {
+      testNotes.getElementsByTagName('span')[i].setAttribute('data-noteid', `${i}`);
+      orderOfNoteID.push(testNotes.getElementsByTagName('span')[i].getAttribute('data-noteid', `${i}`));
+    }
+    let selectedElm = document.querySelector('.startTypeChar');
+    if (selectedElm !== document.querySelector(`[data-noteid="${Math.max(orderOfNoteID)}"]`)) {
       document.querySelector('.startTypeChar').nextSibling.classList.add('startTypeChar');
       document.querySelector('.startTypeChar').classList.remove('startTypeChar'); //This Line needs to be fixed
-    } else if (testNotes.getElementsByTagName('span').length == 1) {
+    } else if (selectedElm == document.querySelector(`[data-noteid="${Math.max(orderOfNoteID)}"]`)) {
       selectedElmBackspace.classList.remove('startTypeChar');
     }
     else {
@@ -212,10 +225,28 @@ document.addEventListener("click", async function (evt) {
     document.querySelector('.startTypeChar').classList.remove('startTypeChar'); //Try to add a querySelectorAll without errors
     evt.target.classList.add('startTypeChar');
     console.log(enterPressed);
-    if(document.querySelector('.enterPress') !== null) document.querySelector('.enterPress').classList.remove('enterPress');
+    if (document.querySelector('.enterPress') !== null) document.querySelector('.enterPress').classList.remove('enterPress');
     evt.target.parentElement.classList.add('enterPress');
     clickedOn = true;
   } else {
     console.log('not the target');
   }
 })
+
+function getSelectedText() {
+  let text = "";
+  if (typeof window.getSelection != "undefined") {
+    text = window.getSelection().toString();
+  } else if (typeof document.selection != "undefined" && document.selection.type == "Text") {
+    text = document.selection.createRange().text;
+  }
+  return text;
+}
+
+function boldThing() {
+  let selectedText = getSelectedText();
+  if (selectedText) {
+    alert(selectedText);
+    selectedText.classList.toggle('bolder');
+  }
+}
